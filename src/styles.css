@@ -31,11 +31,35 @@ body {
   animation: background-drift 28s linear infinite;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: -30% -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(210, 168, 77, 0.08) 49%,
+      rgba(246, 239, 223, 0.055) 52%,
+      transparent 60%,
+      transparent 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.72;
+  transform: translateX(-38%);
+  animation: ambient-sweep 22s ease-in-out infinite;
+}
+
 button {
   font: inherit;
 }
 
 .app-shell {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   padding: clamp(20px, 2vw, 42px);
 }
@@ -301,6 +325,18 @@ blockquote {
 
   to {
     background-position: 96px 48px, -48px 96px, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes ambient-sweep {
+  0%,
+  18% {
+    transform: translateX(-42%);
+  }
+
+  58%,
+  100% {
+    transform: translateX(42%);
   }
 }
 

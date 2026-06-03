@@ -9,10 +9,17 @@ test("motion styles define restrained gallery and detail animations", () => {
   for (const token of [
     "@keyframes detail-reveal",
     "@keyframes background-drift",
+    "@keyframes ambient-sweep",
     "@media (prefers-reduced-motion: reduce)",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
+});
+
+test("ambient motion lives in the empty background layer", () => {
+  assert.ok(css.includes("body::before"), "background sweep should be a body pseudo-element");
+  assert.ok(css.includes("pointer-events: none"), "background sweep should not intercept touches");
+  assert.ok(css.includes("mix-blend-mode: screen"), "background sweep should stay luminous and subtle");
 });
 
 test("selected cards do not use flashing infinite highlight animations", () => {
