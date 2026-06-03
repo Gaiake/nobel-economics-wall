@@ -1,0 +1,243 @@
+:root {
+  color-scheme: dark;
+  --bg: #101918;
+  --panel: #f6efdf;
+  --ink: #14211f;
+  --muted: #6f786f;
+  --gold: #d2a84d;
+  --gold-dark: #8b6b22;
+  --green: #203833;
+  --blue: #536f86;
+  --brick: #9b5d4b;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--panel);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: clamp(20px, 2vw, 42px);
+}
+
+.loading-state,
+.error-state {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 28px;
+}
+
+.wall-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.wall-header p {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: clamp(18px, 1.3vw, 28px);
+  font-weight: 700;
+}
+
+.wall-header h1 {
+  margin: 0;
+  font-size: clamp(34px, 3vw, 68px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.decade-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  max-width: 58vw;
+}
+
+.decade-button,
+.laureate-card {
+  border: 0;
+  cursor: pointer;
+}
+
+.decade-button {
+  min-height: 56px;
+  padding: 0 22px;
+  background: var(--green);
+  color: var(--panel);
+  font-size: clamp(16px, 1vw, 22px);
+  font-weight: 700;
+}
+
+.decade-button.is-active {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.wall-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(360px, 0.92fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(132px, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.laureate-card {
+  min-height: 190px;
+  padding: 16px 12px 14px;
+  background: var(--panel);
+  color: var(--ink);
+  border-top: 5px solid transparent;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.laureate-card.is-active {
+  border-top-color: var(--gold);
+  box-shadow: inset 0 0 0 3px rgba(210, 168, 77, 0.38);
+}
+
+.portrait {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--gold), var(--blue));
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.portrait-large {
+  width: 128px;
+  height: 128px;
+  font-size: 42px;
+  flex: 0 0 auto;
+}
+
+.card-name {
+  font-size: clamp(17px, 1.05vw, 24px);
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.card-meta {
+  color: #5d655f;
+  font-size: clamp(13px, 0.85vw, 18px);
+  line-height: 1.25;
+}
+
+.detail-panel {
+  background: var(--panel);
+  color: var(--ink);
+  border-left: 6px solid var(--gold);
+  padding: clamp(20px, 2vw, 34px);
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.detail-year,
+.detail-panel h3 {
+  color: var(--gold-dark);
+  font-weight: 900;
+}
+
+.detail-year {
+  font-size: clamp(16px, 1vw, 22px);
+}
+
+.detail-head {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.detail-head h2 {
+  margin: 0 0 8px;
+  font-size: clamp(30px, 2.4vw, 56px);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.detail-head p,
+.detail-panel section p {
+  margin: 0;
+}
+
+.detail-head p {
+  color: var(--muted);
+  font-size: clamp(15px, 1vw, 22px);
+}
+
+.detail-panel h3 {
+  margin: 0 0 8px;
+  font-size: clamp(16px, 1vw, 22px);
+}
+
+.detail-panel section p {
+  font-size: clamp(18px, 1.25vw, 28px);
+  line-height: 1.55;
+}
+
+blockquote {
+  margin: 0;
+  font-size: clamp(22px, 1.55vw, 34px);
+  line-height: 1.45;
+  font-weight: 900;
+}
+
+.empty-state {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 24px;
+}
+
+@media (max-width: 1100px) {
+  .wall-header,
+  .wall-layout {
+    display: block;
+  }
+
+  .decade-nav {
+    justify-content: flex-start;
+    max-width: none;
+    margin-top: 18px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-bottom: 18px;
+  }
+}
