@@ -20,6 +20,108 @@ NS = {
 YEAR_RE = re.compile(r"^(19|20)\d{2}年$")
 WINNER_LINE_RE = re.compile(r"^(.+?)（(.+?)，(.+?)）$")
 
+THEORY_TAG_OVERRIDES = {
+    "ragnar-frisch-1969-1": "计量经济学",
+    "jan-tinbergen-1969-2": "政策模型",
+    "paul-a-samuelson-1970-1": "现代经济学",
+    "simon-kuznets-1971-1": "国民收入",
+    "john-r-hicks-1972-1": "福利经济学",
+    "kenneth-j-arrow-1972-2": "社会选择",
+    "wassily-leontief-1973-1": "投入产出",
+    "gunnar-myrdal-1974-1": "制度分析",
+    "friedrich-von-hayek-1974-2": "市场秩序",
+    "leonid-kantorovich-1975-1": "资源配置",
+    "tjalling-c-koopmans-1975-2": "资源配置",
+    "milton-friedman-1976-1": "货币主义",
+    "bertil-ohlin-1977-1": "国际贸易",
+    "james-e-meade-1977-2": "国际经济",
+    "herbert-a-simon-1978-1": "有限理性",
+    "william-arthur-lewis-1979-1": "发展经济学",
+    "theodore-w-schultz-1979-2": "人力资本",
+    "lawrence-r-klein-1980-1": "经济预测",
+    "james-tobin-1981-1": "金融宏观",
+    "george-j-stigler-1982-1": "产业组织",
+    "g-rard-debreu-1983-1": "一般均衡",
+    "john-richard-nicholas-stone-1984-1": "国民核算",
+    "franco-modigliani-1985-1": "生命周期",
+    "james-m-buchanan-jr-1986-1": "公共选择",
+    "robert-m-solow-1987-1": "增长理论",
+    "maurice-allais-1988-1": "市场效率",
+    "trygve-haavelmo-1989-1": "计量基础",
+    "harry-m-markowitz-1990-1": "资产组合",
+    "william-f-sharpe-1990-2": "资产定价",
+    "merton-h-miller-1990-3": "公司金融",
+    "ronald-h-coase-1991-1": "交易成本",
+    "gary-s-becker-1992-1": "社会经济学",
+    "robert-w-fogel-1993-1": "经济史",
+    "douglass-c-north-1993-2": "制度变迁",
+    "john-f-nash-jr-1994-1": "博弈论",
+    "john-c-harsanyi-1994-2": "博弈论",
+    "reinhard-selten-1994-3": "博弈论",
+    "robert-e-lucas-jr-1995-1": "理性预期",
+    "james-a-mirrlees-1996-1": "激励理论",
+    "william-s-vickrey-1996-2": "拍卖理论",
+    "robert-c-merton-1997-1": "期权定价",
+    "myron-s-scholes-1997-2": "期权定价",
+    "amartya-sen-1998-1": "福利经济学",
+    "robert-a-mundell-1999-1": "货币政策",
+    "james-j-heckman-2000-1": "选择模型",
+    "daniel-l-mcfadden-2000-2": "离散选择",
+    "george-a-akerlof-2001-1": "逆向选择",
+    "a-michael-spence-2001-2": "信号理论",
+    "joseph-e-stiglitz-2001-3": "信息经济学",
+    "daniel-kahneman-2002-1": "行为决策",
+    "vernon-l-smith-2002-2": "实验经济学",
+    "robert-f-engle-iii-2003-1": "金融波动",
+    "clive-w-j-granger-2003-2": "协整理论",
+    "finn-e-kydland-2004-1": "时间一致性",
+    "edward-c-prescott-2004-2": "真实周期",
+    "thomas-c-schelling-2005-1": "冲突合作",
+    "robert-j-aumann-2005-2": "重复博弈",
+    "edmund-s-phelps-2006-1": "自然失业率",
+    "leonid-hurwicz-2007-1": "机制设计",
+    "eric-s-maskin-2007-2": "机制设计",
+    "roger-b-myerson-2007-3": "机制设计",
+    "paul-krugman-2008-1": "新贸易理论",
+    "elinor-ostrom-2009-1": "公共治理",
+    "oliver-e-williamson-2009-2": "企业边界",
+    "peter-a-diamond-2010-1": "搜寻匹配",
+    "dale-t-mortensen-2010-2": "搜寻匹配",
+    "christopher-a-pissarides-2010-3": "搜寻匹配",
+    "thomas-j-sargent-2011-1": "宏观计量",
+    "christopher-a-sims-2011-2": "宏观计量",
+    "alvin-e-roth-2012-1": "市场设计",
+    "lloyd-s-shapley-2012-2": "匹配理论",
+    "eugene-f-fama-2013-1": "有效市场",
+    "lars-peter-hansen-2013-2": "广义矩估计",
+    "robert-j-shiller-2013-3": "行为金融",
+    "jean-tirole-2014-1": "产业监管",
+    "angus-deaton-2015-1": "消费福利",
+    "oliver-hart-2016-1": "契约理论",
+    "bengt-holmstr-m-2016-2": "契约理论",
+    "richard-h-thaler-2017-1": "行为经济学",
+    "william-d-nordhaus-2018-1": "气候经济学",
+    "paul-m-romer-2018-2": "内生增长",
+    "abhijit-banerjee-2019-1": "减贫实验",
+    "esther-duflo-2019-2": "减贫实验",
+    "michael-kremer-2019-3": "减贫实验",
+    "paul-r-milgrom-2020-1": "拍卖理论",
+    "robert-b-wilson-2020-2": "拍卖理论",
+    "david-card-2021-1": "因果推断",
+    "joshua-d-angrist-2021-2": "因果推断",
+    "guido-w-imbens-2021-3": "因果推断",
+    "ben-s-bernanke-2022-1": "金融危机",
+    "douglas-w-diamond-2022-2": "银行理论",
+    "philip-h-dybvig-2022-3": "银行理论",
+    "claudia-goldin-2023-1": "性别经济学",
+    "daron-acemoglu-2024-1": "制度与繁荣",
+    "simon-johnson-2024-2": "制度与繁荣",
+    "james-a-robinson-2024-3": "制度与繁荣",
+    "philippe-aghion-2025-1": "创造性毁灭",
+    "peter-howitt-2025-2": "创造性毁灭",
+    "joel-mokyr-2025-3": "技术进步",
+}
+
 
 def decade_for_year(year: int) -> str:
     if 1969 <= year <= 1979:
@@ -163,6 +265,10 @@ def short_tag(theory: str) -> str:
     return text[:8]
 
 
+def theory_tag_for(winner: dict, theory: str) -> str:
+    return THEORY_TAG_OVERRIDES.get(winner["id"], short_tag(theory))
+
+
 def clean_text(text: str) -> str:
     return text.replace("（找不到）", "").replace("找不到", "").strip(" ：:;；")
 
@@ -177,7 +283,7 @@ def build_records() -> list[dict]:
         for winner in winners:
             theory = clean_text(parse_named_block(theory_block, winner["nameZh"]) or " ".join(theory_block))
             quote = clean_text(parse_named_block(quote_block, winner["nameZh"]) or " ".join(quote_block))
-            theory_tag = short_tag(theory)
+            theory_tag = theory_tag_for(winner, theory)
             winner["theory"] = theory
             winner["theoryTag"] = theory_tag
             winner["quote"] = quote
