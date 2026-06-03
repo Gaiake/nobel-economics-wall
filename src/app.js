@@ -79,7 +79,7 @@ function renderDetail() {
   }
 
   return `
-    <aside class="detail-panel">
+    <aside class="detail-panel" data-active-id="${escapeHtml(item.id)}">
       <div class="detail-year">${escapeHtml(item.year)} 年获奖者</div>
       <div class="detail-head">
         ${renderPortrait(item, "portrait-large")}

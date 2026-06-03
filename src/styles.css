@@ -9,6 +9,7 @@
   --green: #203833;
   --blue: #536f86;
   --brick: #9b5d4b;
+  --line-soft: rgba(210, 168, 77, 0.08);
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
 }
 
@@ -19,8 +20,15 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background:
+    linear-gradient(90deg, rgba(246, 239, 223, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(246, 239, 223, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 18% 14%, rgba(210, 168, 77, 0.13), transparent 28%),
+    radial-gradient(circle at 82% 68%, rgba(83, 111, 134, 0.12), transparent 24%),
+    var(--bg);
+  background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%, auto;
   color: var(--panel);
+  animation: background-drift 28s linear infinite;
 }
 
 button {
@@ -84,11 +92,42 @@ button {
   color: var(--panel);
   font-size: clamp(16px, 1vw, 22px);
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .decade-button.is-active {
   background: var(--gold);
   color: var(--bg);
+}
+
+.decade-button::after {
+  content: "";
+  position: absolute;
+  inset: auto 16px 8px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.decade-button:hover,
+.decade-button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.decade-button.is-active::after,
+.decade-button:hover::after,
+.decade-button:focus-visible::after {
+  opacity: 0.72;
+  transform: scaleX(1);
 }
 
 .wall-layout {
@@ -115,11 +154,26 @@ button {
   justify-items: center;
   gap: 8px;
   text-align: center;
+  transition:
+    background-color 160ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+  will-change: transform;
 }
 
 .laureate-card.is-active {
   border-top-color: var(--gold);
-  box-shadow: inset 0 0 0 3px rgba(210, 168, 77, 0.38);
+  background: #fbf3de;
+  box-shadow:
+    inset 0 0 0 3px rgba(210, 168, 77, 0.42),
+    0 8px 22px rgba(0, 0, 0, 0.14);
+}
+
+.laureate-card:hover,
+.laureate-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 .portrait {
@@ -133,6 +187,19 @@ button {
   place-items: center;
   font-size: 28px;
   font-weight: 800;
+  box-shadow: 0 0 0 3px rgba(210, 168, 77, 0.16);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.laureate-card:hover .portrait,
+.laureate-card:focus-visible .portrait,
+.laureate-card.is-active .portrait {
+  box-shadow:
+    0 0 0 3px rgba(210, 168, 77, 0.34),
+    0 0 24px rgba(210, 168, 77, 0.24);
+  transform: scale(1.035);
 }
 
 .portrait-large {
@@ -163,6 +230,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  animation: detail-reveal 180ms ease-out both;
+  box-shadow: -16px 0 36px rgba(0, 0, 0, 0.14);
 }
 
 .detail-year,
@@ -215,6 +284,26 @@ blockquote {
   font-weight: 900;
 }
 
+@keyframes detail-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes background-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 96px 48px, -48px 96px, 0 0, 0 0, 0 0;
+  }
+}
+
 .empty-state {
   min-height: 280px;
   display: grid;
@@ -239,5 +328,16 @@ blockquote {
   .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     margin-bottom: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
   }
 }
