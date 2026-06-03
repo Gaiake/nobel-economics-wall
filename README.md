@@ -43,24 +43,3 @@ assets/portraits/       人物头像
 tests/                  数据与交互状态测试
 ```
 
-## GitHub Pages 部署
-
-这个项目不需要构建步骤，可以直接用 GitHub Pages 从 `main` 分支根目录部署。
-
-设置路径：
-
-1. 打开 GitHub 仓库页面
-2. 进入 `Settings`
-3. 进入 `Pages`
-4. `Build and deployment` 选择 `Deploy from a branch`
-5. `Branch` 选择 `main`
-6. 文件夹选择 `/ (root)`
-7. 点击 `Save`
-
-部署完成后，访问地址通常是：
-
-```text
-https://gaiake.github.io/nobel-economics-wall/
-```
-
-如果页面没有立刻出现，等 1-3 分钟再刷新。
