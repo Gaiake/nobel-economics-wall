@@ -22,6 +22,20 @@ test("ambient motion lives in the empty background layer", () => {
   assert.ok(css.includes("mix-blend-mode: screen"), "background sweep should stay luminous and subtle");
 });
 
+test("exhibition polish tokens and surfaces are present", () => {
+  for (const token of [
+    "--panel-deep",
+    "--paper-edge",
+    "--museum-shadow",
+    "body::after",
+    ".laureate-card::before",
+    ".detail-panel::before",
+    "blockquote::before",
+  ]) {
+    assert.ok(css.includes(token), `missing ${token}`);
+  }
+});
+
 test("selected cards do not use flashing infinite highlight animations", () => {
   assert.equal(css.includes("@keyframes active-glow"), false);
   assert.equal(css.includes("active-glow"), false);

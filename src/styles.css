@@ -2,6 +2,8 @@
   color-scheme: dark;
   --bg: #101918;
   --panel: #f6efdf;
+  --panel-deep: #eee3cc;
+  --paper-edge: rgba(142, 116, 58, 0.34);
   --ink: #14211f;
   --muted: #6f786f;
   --gold: #d2a84d;
@@ -10,6 +12,7 @@
   --blue: #536f86;
   --brick: #9b5d4b;
   --line-soft: rgba(210, 168, 77, 0.08);
+  --museum-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
 }
 
@@ -53,6 +56,17 @@ body::before {
   animation: ambient-sweep 22s ease-in-out infinite;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(210, 168, 77, 0.055), transparent 22%, transparent 78%, rgba(83, 111, 134, 0.06)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 18%, transparent 72%, rgba(0, 0, 0, 0.22));
+}
+
 button {
   font: inherit;
 }
@@ -78,7 +92,9 @@ button {
   align-items: flex-start;
   justify-content: space-between;
   gap: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(210, 168, 77, 0.2);
 }
 
 .wall-header p {
@@ -86,6 +102,7 @@ button {
   color: var(--gold);
   font-size: clamp(18px, 1.3vw, 28px);
   font-weight: 700;
+  text-shadow: 0 0 18px rgba(210, 168, 77, 0.18);
 }
 
 .wall-header h1 {
@@ -93,6 +110,7 @@ button {
   font-size: clamp(34px, 3vw, 68px);
   line-height: 1.08;
   letter-spacing: 0;
+  text-shadow: 0 16px 34px rgba(0, 0, 0, 0.36);
 }
 
 .decade-nav {
@@ -112,12 +130,14 @@ button {
 .decade-button {
   min-height: 56px;
   padding: 0 22px;
-  background: var(--green);
+  background: rgba(32, 56, 51, 0.92);
   color: var(--panel);
   font-size: clamp(16px, 1vw, 22px);
   font-weight: 700;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(246, 239, 223, 0.08);
+  box-shadow: inset 0 1px 0 rgba(246, 239, 223, 0.08);
   transition:
     background-color 180ms ease,
     color 180ms ease,
@@ -157,27 +177,35 @@ button {
 .wall-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(360px, 0.92fr);
-  gap: 24px;
+  gap: 28px;
   align-items: stretch;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(132px, 1fr));
-  gap: 14px;
+  gap: 16px;
   align-content: start;
 }
 
 .laureate-card {
   min-height: 190px;
   padding: 16px 12px 14px;
-  background: var(--panel);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 238, 0.92), rgba(236, 225, 203, 0.96)),
+    var(--panel);
   color: var(--ink);
-  border-top: 5px solid transparent;
+  border: 1px solid var(--paper-edge);
+  border-top: 5px solid rgba(142, 116, 58, 0.22);
+  position: relative;
+  overflow: hidden;
   display: grid;
   justify-items: center;
   gap: 8px;
   text-align: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 10px 24px rgba(0, 0, 0, 0.13);
   transition:
     background-color 160ms ease,
     border-color 180ms ease,
@@ -186,12 +214,25 @@ button {
   will-change: transform;
 }
 
+.laureate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(142, 116, 58, 0.08), transparent 16%, transparent 84%, rgba(142, 116, 58, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 30%);
+}
+
 .laureate-card.is-active {
   border-top-color: var(--gold);
-  background: #fbf3de;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 227, 0.98), rgba(238, 226, 198, 0.98)),
+    var(--panel);
   box-shadow:
-    inset 0 0 0 3px rgba(210, 168, 77, 0.42),
-    0 8px 22px rgba(0, 0, 0, 0.14);
+    inset 0 0 0 2px rgba(210, 168, 77, 0.44),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    var(--museum-shadow);
 }
 
 .laureate-card:hover,
@@ -211,7 +252,10 @@ button {
   place-items: center;
   font-size: 28px;
   font-weight: 800;
-  box-shadow: 0 0 0 3px rgba(210, 168, 77, 0.16);
+  border: 2px solid rgba(246, 239, 223, 0.78);
+  box-shadow:
+    0 0 0 3px rgba(210, 168, 77, 0.16),
+    0 6px 16px rgba(0, 0, 0, 0.18);
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -237,25 +281,49 @@ button {
   font-size: clamp(17px, 1.05vw, 24px);
   font-weight: 800;
   line-height: 1.22;
+  position: relative;
+  z-index: 1;
 }
 
 .card-meta {
-  color: #5d655f;
+  color: #6f624d;
   font-size: clamp(13px, 0.85vw, 18px);
   line-height: 1.25;
+  position: relative;
+  z-index: 1;
 }
 
 .detail-panel {
-  background: var(--panel);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 236, 0.96), rgba(238, 228, 207, 0.98)),
+    var(--panel);
   color: var(--ink);
-  border-left: 6px solid var(--gold);
+  border: 1px solid var(--paper-edge);
+  border-left: 7px solid var(--gold);
+  position: relative;
+  overflow: hidden;
   padding: clamp(20px, 2vw, 34px);
   min-height: 620px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   animation: detail-reveal 180ms ease-out both;
-  box-shadow: -16px 0 36px rgba(0, 0, 0, 0.14);
+  box-shadow: var(--museum-shadow);
+}
+
+.detail-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(142, 116, 58, 0.12), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 24%);
+}
+
+.detail-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .detail-year,
@@ -272,6 +340,8 @@ button {
   display: flex;
   gap: 18px;
   align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(142, 116, 58, 0.2);
 }
 
 .detail-head h2 {
@@ -303,9 +373,23 @@ button {
 
 blockquote {
   margin: 0;
+  padding: 16px 20px 16px 26px;
+  border-left: 4px solid rgba(210, 168, 77, 0.82);
+  background: rgba(255, 248, 230, 0.68);
+  position: relative;
   font-size: clamp(22px, 1.55vw, 34px);
   line-height: 1.45;
   font-weight: 900;
+}
+
+blockquote::before {
+  content: "“";
+  position: absolute;
+  left: 7px;
+  top: -4px;
+  color: rgba(210, 168, 77, 0.45);
+  font-size: 54px;
+  line-height: 1;
 }
 
 @keyframes detail-reveal {
