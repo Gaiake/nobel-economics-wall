@@ -33,7 +33,10 @@ function findActiveLaureate() {
 
 function renderPortrait(item, sizeClass = "") {
   if (item.portrait) {
-    return `<img class="portrait ${sizeClass}" src="${escapeHtml(item.portrait)}" alt="${escapeHtml(item.nameZh)}">`;
+    const positionStyle = item.portraitPosition
+      ? ` style="object-position: ${escapeHtml(item.portraitPosition)}"`
+      : "";
+    return `<img class="portrait ${sizeClass}" src="${escapeHtml(item.portrait)}" alt="${escapeHtml(item.nameZh)}"${positionStyle}>`;
   }
   return `<div class="portrait initials ${sizeClass}" aria-hidden="true">${escapeHtml(initials(item.nameZh))}</div>`;
 }

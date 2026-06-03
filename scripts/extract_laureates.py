@@ -122,6 +122,11 @@ THEORY_TAG_OVERRIDES = {
     "joel-mokyr-2025-3": "技术进步",
 }
 
+PORTRAIT_POSITION_OVERRIDES = {
+    "ragnar-frisch-1969-1": "78% 50%",
+    "george-a-akerlof-2001-1": "50% 24%",
+}
+
 
 def decade_for_year(year: int) -> str:
     if 1969 <= year <= 1979:
@@ -289,6 +294,8 @@ def build_records() -> list[dict]:
             winner["quote"] = quote
             winner["bio"] = f"{winner['nameZh']}因其在{theory_tag}等领域的代表性贡献获得诺贝尔经济学奖。"
             winner["portrait"] = ""
+            if winner["id"] in PORTRAIT_POSITION_OVERRIDES:
+                winner["portraitPosition"] = PORTRAIT_POSITION_OVERRIDES[winner["id"]]
             records.append(winner)
 
     media_paths = ordered_media_paths()

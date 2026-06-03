@@ -10,7 +10,8 @@
     "theoryTag": "计量经济学",
     "quote": "计量经济学可以定义为基于理论与观测的同时发展，通过适当的推理方法联系起来的实际经济现象的定量分析。",
     "bio": "拉格纳·弗里希因其在计量经济学等领域的代表性贡献获得诺贝尔经济学奖。",
-    "portrait": "assets/portraits/image1.png"
+    "portrait": "assets/portraits/image1.png",
+    "portraitPosition": "78% 50%"
   },
   {
     "id": "jan-tinbergen-1969-2",
@@ -608,7 +609,8 @@
     "theoryTag": "逆向选择",
     "quote": "确认的预测将未来投射为光明；未确认的预测则将未来投射为黯淡。而低落的信心曾导致信用市场冻结。",
     "bio": "乔治·阿克洛夫因其在逆向选择等领域的代表性贡献获得诺贝尔经济学奖。",
-    "portrait": "assets/portraits/image48.jpeg"
+    "portrait": "assets/portraits/image48.jpeg",
+    "portraitPosition": "50% 24%"
   },
   {
     "id": "a-michael-spence-2001-2",

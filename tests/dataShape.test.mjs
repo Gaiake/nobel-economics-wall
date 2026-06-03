@@ -38,3 +38,16 @@ test("card summaries are concise display labels", () => {
     assert.equal(/[：:，,。；;]/.test(item.theoryTag), false, `${item.id} tag has punctuation`);
   }
 });
+
+test("off-center source portraits include display focal points", () => {
+  const byId = Object.fromEntries(laureates.map((item) => [item.id, item]));
+
+  assert.equal(byId["ragnar-frisch-1969-1"].portraitPosition, "78% 50%");
+  assert.equal(byId["george-a-akerlof-2001-1"].portraitPosition, "50% 24%");
+});
+
+test("portrait focal points use CSS percentage coordinates", () => {
+  for (const item of laureates.filter((entry) => entry.portraitPosition)) {
+    assert.match(item.portraitPosition, /^\d{1,3}% \d{1,3}%$/, `${item.id} has invalid portrait position`);
+  }
+});
