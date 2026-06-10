@@ -1,4 +1,10 @@
 import {
+  DEFAULT_MODULE,
+  NAV_ITEMS,
+  getInitialShellState,
+  getNextShellState,
+} from "./displayShell.js";
+import {
   getDecades,
   getInitialSelection,
   getLaureatesForDecade,
@@ -6,14 +12,17 @@ import {
 } from "./laureateState.js";
 
 const app = document.querySelector("#app");
-const AUTO_ADVANCE_MS = 30_000;
+const NOBEL_AUTO_ADVANCE_MS = 30_000;
+const SHELL_TICK_MS = 1_000;
 
 let laureates = [];
-let state = {
+let shellState = getInitialShellState();
+let nobelState = {
   activeDecade: "",
   activeLaureateId: "",
 };
-let timer = null;
+let nobelTimer = null;
+let shellTimer = null;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -28,7 +37,7 @@ function initials(name) {
 }
 
 function findActiveLaureate() {
-  return laureates.find((item) => item.id === state.activeLaureateId) ?? laureates[0];
+  return laureates.find((item) => item.id === nobelState.activeLaureateId) ?? laureates[0];
 }
 
 function renderPortrait(item, sizeClass = "") {
@@ -41,11 +50,40 @@ function renderPortrait(item, sizeClass = "") {
   return `<div class="portrait initials ${sizeClass}" aria-hidden="true">${escapeHtml(initials(item.nameZh))}</div>`;
 }
 
+function renderNavigation() {
+  return `
+    <aside class="nav-panel" aria-label="大屏导航">
+      <div class="nav-brand">
+        <p>浙江大学经济学院</p>
+        <h1>学科思政基地</h1>
+      </div>
+      <div class="nav-clock">
+        <span>六屏总控</span>
+        <strong>6480 × 1980</strong>
+      </div>
+      <nav class="nav-actions">
+        ${NAV_ITEMS.map(
+          (item) => `
+            <button class="nav-button ${item.id === shellState.activeModule ? "is-active" : ""}" data-module="${escapeHtml(item.id)}">
+              <span>${escapeHtml(item.label)}</span>
+              <small>${escapeHtml(item.description)}</small>
+            </button>
+          `,
+        ).join("")}
+      </nav>
+      <div class="nav-idle">
+        <strong>空闲回退</strong>
+        <span>5 分钟无触屏自动回到诺奖展示</span>
+      </div>
+    </aside>
+  `;
+}
+
 function renderDecadeButtons() {
   return getDecades(laureates)
     .map(
       (decade) => `
-        <button class="decade-button ${decade === state.activeDecade ? "is-active" : ""}" data-decade="${escapeHtml(decade)}">
+        <button class="decade-button ${decade === nobelState.activeDecade ? "is-active" : ""}" data-decade="${escapeHtml(decade)}">
           ${escapeHtml(decade)}
         </button>
       `,
@@ -54,7 +92,7 @@ function renderDecadeButtons() {
 }
 
 function renderCards() {
-  const cards = getLaureatesForDecade(laureates, state.activeDecade);
+  const cards = getLaureatesForDecade(laureates, nobelState.activeDecade);
   if (cards.length === 0) {
     return `<section class="empty-state">该年代暂无可展示数据。</section>`;
   }
@@ -62,7 +100,7 @@ function renderCards() {
   return cards
     .map(
       (item) => `
-        <button class="laureate-card ${item.id === state.activeLaureateId ? "is-active" : ""}" data-id="${escapeHtml(item.id)}">
+        <button class="laureate-card ${item.id === nobelState.activeLaureateId ? "is-active" : ""}" data-id="${escapeHtml(item.id)}">
           ${renderPortrait(item)}
           <span class="card-name">${escapeHtml(item.nameZh)}</span>
           <span class="card-meta">${escapeHtml(item.year)} · ${escapeHtml(item.theoryTag)}</span>
@@ -116,58 +154,146 @@ function renderDetail() {
   `;
 }
 
-function render() {
-  app.innerHTML = `
-    <header class="wall-header">
-      <div>
-        <p>浙江大学经济学院 学科思政基地</p>
-        <h1>诺贝尔经济学奖得主</h1>
-      </div>
-      <nav class="decade-nav" aria-label="按年代筛选">
-        ${renderDecadeButtons()}
-      </nav>
-    </header>
-    <section class="wall-layout">
-      <div class="gallery-grid" aria-label="获奖者头像矩阵">
-        ${renderCards()}
-      </div>
-      ${renderDetail()}
+function renderNobelModule() {
+  return `
+    <section class="middle-module nobel-module">
+      <header class="wall-header">
+        <div>
+          <p>诺贝尔经济学奖得主</p>
+          <h2>思想、理论与时代回应</h2>
+        </div>
+        <nav class="decade-nav" aria-label="按年代筛选">
+          ${renderDecadeButtons()}
+        </nav>
+      </header>
+      <section class="nobel-layout">
+        <div class="gallery-grid" aria-label="获奖者头像矩阵">
+          ${renderCards()}
+        </div>
+        ${renderDetail()}
+      </section>
     </section>
   `;
 }
 
-function resetAutoAdvance() {
-  window.clearInterval(timer);
-  timer = window.setInterval(() => {
-    const next = getNextLaureate(laureates, state.activeLaureateId);
+function renderGameModule() {
+  const item = NAV_ITEMS.find((entry) => entry.id === shellState.activeModule);
+  return `
+    <section class="middle-module game-module">
+      <div class="game-kicker">互动小游戏</div>
+      <h2>${escapeHtml(item?.label ?? "互动小游戏")}</h2>
+      <p>该区域覆盖第 2-3 块屏幕，不影响右侧同花顺行情新闻窗口。</p>
+      <div class="game-placeholder">
+        <span>后续接入游戏内容</span>
+        <strong>${escapeHtml(item?.description ?? "互动模块")}</strong>
+      </div>
+      <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
+    </section>
+  `;
+}
+
+function renderMarketGuide() {
+  return `
+    <aside class="market-panel" aria-label="同花顺窗口区域">
+      <div>
+        <p>右侧三屏区域</p>
+        <h2>同花顺实时行情 + 新闻</h2>
+      </div>
+      <ul>
+        <li>建议将同花顺客户端或浏览器窗口固定到此区域</li>
+        <li>窗口坐标：x=3240, y=0, width=3240, height=1980</li>
+        <li>网页总控只管理左侧导航和中间互动区域</li>
+      </ul>
+    </aside>
+  `;
+}
+
+function renderMiddleModule() {
+  return shellState.activeModule === DEFAULT_MODULE ? renderNobelModule() : renderGameModule();
+}
+
+function render() {
+  app.innerHTML = `
+    <section class="screen-shell">
+      ${renderNavigation()}
+      <main class="middle-panel">
+        ${renderMiddleModule()}
+      </main>
+      ${renderMarketGuide()}
+    </section>
+  `;
+}
+
+function resetNobelAutoAdvance() {
+  window.clearInterval(nobelTimer);
+  nobelTimer = window.setInterval(() => {
+    if (shellState.activeModule !== DEFAULT_MODULE) return;
+    const next = getNextLaureate(laureates, nobelState.activeLaureateId);
     if (!next) return;
-    state.activeLaureateId = next.id;
-    state.activeDecade = next.decade;
+    nobelState.activeLaureateId = next.id;
+    nobelState.activeDecade = next.decade;
     render();
-  }, AUTO_ADVANCE_MS);
+  }, NOBEL_AUTO_ADVANCE_MS);
+}
+
+function markInteraction(now = Date.now()) {
+  shellState = {
+    ...shellState,
+    lastInteractionAt: now,
+  };
 }
 
 function handleClick(event) {
+  markInteraction();
+
+  const moduleButton = event.target.closest("[data-module]");
   const decadeButton = event.target.closest("[data-decade]");
   const laureateCard = event.target.closest("[data-id]");
 
-  if (decadeButton) {
-    state.activeDecade = decadeButton.dataset.decade;
-    const [first] = getLaureatesForDecade(laureates, state.activeDecade);
-    state.activeLaureateId = first?.id ?? "";
+  if (moduleButton) {
+    shellState = getNextShellState(shellState, moduleButton.dataset.module);
     render();
-    resetAutoAdvance();
+    resetNobelAutoAdvance();
+    return;
+  }
+
+  if (decadeButton) {
+    nobelState.activeDecade = decadeButton.dataset.decade;
+    const [first] = getLaureatesForDecade(laureates, nobelState.activeDecade);
+    nobelState.activeLaureateId = first?.id ?? "";
+    render();
+    resetNobelAutoAdvance();
     return;
   }
 
   if (laureateCard) {
     const selected = laureates.find((item) => item.id === laureateCard.dataset.id);
     if (selected) {
-      state.activeLaureateId = selected.id;
-      state.activeDecade = selected.decade;
+      nobelState.activeLaureateId = selected.id;
+      nobelState.activeDecade = selected.decade;
       render();
-      resetAutoAdvance();
+      resetNobelAutoAdvance();
     }
+  }
+}
+
+function startShellIdleTimer() {
+  window.clearInterval(shellTimer);
+  shellTimer = window.setInterval(() => {
+    const nextState = getNextShellState(shellState, "tick");
+    if (nextState.activeModule !== shellState.activeModule) {
+      shellState = nextState;
+      render();
+      resetNobelAutoAdvance();
+      return;
+    }
+    shellState = nextState;
+  }, SHELL_TICK_MS);
+}
+
+function bindGlobalActivity() {
+  for (const eventName of ["pointerdown", "touchstart", "keydown"]) {
+    window.addEventListener(eventName, () => markInteraction(), { passive: true });
   }
 }
 
@@ -178,10 +304,13 @@ async function boot() {
       throw new Error(`HTTP ${response.status}`);
     }
     laureates = await response.json();
-    state = getInitialSelection(laureates);
+    nobelState = getInitialSelection(laureates);
+    shellState = getInitialShellState();
     app.addEventListener("click", handleClick);
+    bindGlobalActivity();
     render();
-    resetAutoAdvance();
+    resetNobelAutoAdvance();
+    startShellIdleTimer();
   } catch (error) {
     app.innerHTML = `
       <section class="error-state">

@@ -58,3 +58,17 @@ test("person switching does not reanimate the whole card grid", () => {
   assert.equal(css.includes("@keyframes card-enter"), false);
   assert.equal(app.includes("animation-delay"), false);
 });
+
+test("six-screen shell styles reserve the 1:2:3 display regions", () => {
+  for (const token of [
+    ".screen-shell",
+    "grid-template-columns: 1fr 2fr 3fr",
+    ".nav-panel",
+    ".middle-panel",
+    ".market-panel",
+    "overflow: hidden",
+    ".game-module",
+  ]) {
+    assert.ok(css.includes(token), `missing ${token}`);
+  }
+});
