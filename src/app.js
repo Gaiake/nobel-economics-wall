@@ -165,9 +165,6 @@ function renderNobelModule() {
           <p>诺贝尔经济学奖得主</p>
           <h2>思想、理论与时代回应</h2>
         </div>
-        <nav class="decade-nav" aria-label="按年代筛选">
-          ${renderDecadeButtons()}
-        </nav>
       </header>
       <section class="nobel-layout">
         <div class="gallery-grid" aria-label="获奖者头像矩阵">
@@ -175,6 +172,12 @@ function renderNobelModule() {
         </div>
         ${renderDetail()}
       </section>
+      <footer class="nobel-footer">
+        <span>按年代筛选</span>
+        <nav class="decade-nav" aria-label="按年代筛选">
+          ${renderDecadeButtons()}
+        </nav>
+      </footer>
     </section>
   `;
 }
@@ -205,17 +208,6 @@ function renderInvestorGamesModule() {
         <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
       </header>
       <div class="interactive-layout ${activeEmbed.url ? "has-frame" : ""}">
-        <div class="interactive-menu" aria-label="投教小游戏列表">
-          ${INVESTOR_GAMES.map(
-            (game) => `
-              <button class="interactive-card ${game.url === activeEmbed.url ? "is-active" : ""}" data-embed-title="${escapeHtml(game.title)}" data-embed-url="${escapeHtml(game.url)}">
-                <span>投教互动</span>
-                <strong>${escapeHtml(game.title)}</strong>
-                <small>${escapeHtml(game.description)}</small>
-              </button>
-            `,
-          ).join("")}
-        </div>
         ${
           activeEmbed.url
             ? renderEmbedFrame(activeEmbed.title, activeEmbed.url)
@@ -227,6 +219,17 @@ function renderInvestorGamesModule() {
               </section>
             `
         }
+        <div class="interactive-actions" aria-label="投教小游戏列表">
+          ${INVESTOR_GAMES.map(
+            (game) => `
+              <button class="interactive-card ${game.url === activeEmbed.url ? "is-active" : ""}" data-embed-title="${escapeHtml(game.title)}" data-embed-url="${escapeHtml(game.url)}">
+                <span>投教互动</span>
+                <strong>${escapeHtml(game.title)}</strong>
+                <small>${escapeHtml(game.description)}</small>
+              </button>
+            `,
+          ).join("")}
+        </div>
       </div>
     </section>
   `;

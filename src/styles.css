@@ -11,6 +11,11 @@
   --green: #203833;
   --blue: #536f86;
   --brick: #9b5d4b;
+  --cyan: #29dcff;
+  --cyan-soft: rgba(41, 220, 255, 0.28);
+  --electric-blue: #437dff;
+  --screen-blue: #0a2d63;
+  --glass: rgba(18, 54, 100, 0.46);
   --line-soft: rgba(210, 168, 77, 0.08);
   --museum-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
@@ -25,11 +30,11 @@ body {
   overflow: hidden;
   min-height: 100vh;
   background:
-    linear-gradient(90deg, rgba(246, 239, 223, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(246, 239, 223, 0.028) 1px, transparent 1px),
-    radial-gradient(circle at 18% 14%, rgba(210, 168, 77, 0.13), transparent 28%),
-    radial-gradient(circle at 82% 68%, rgba(83, 111, 134, 0.12), transparent 24%),
-    var(--bg);
+    linear-gradient(90deg, rgba(41, 220, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(41, 220, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, rgba(41, 220, 255, 0.26), transparent 26%),
+    radial-gradient(circle at 74% 18%, rgba(67, 125, 255, 0.24), transparent 30%),
+    linear-gradient(135deg, #061126 0%, #0a2d63 48%, #071126 100%);
   background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%, auto;
   color: var(--panel);
   animation: background-drift 28s linear infinite;
@@ -951,6 +956,209 @@ blockquote::before {
   line-height: 1.08;
 }
 
+/* Blue dashboard style for the touch wall. */
+.nav-panel {
+  border-right: 1px solid var(--cyan-soft);
+  background:
+    radial-gradient(circle at 24% 12%, rgba(41, 220, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, rgba(8, 30, 64, 0.92), rgba(4, 15, 34, 0.86));
+}
+
+.nav-brand {
+  border-bottom-color: rgba(41, 220, 255, 0.22);
+}
+
+.nav-brand p,
+.nav-brand span,
+.game-kicker,
+.detail-year,
+.detail-panel h3,
+.interactive-header p,
+.nobel-footer span,
+.interactive-card span,
+.embed-toolbar span {
+  color: var(--cyan);
+  text-shadow: 0 0 18px rgba(41, 220, 255, 0.24);
+}
+
+.nav-button,
+.return-button,
+.decade-button,
+.interactive-card {
+  border: 1px solid var(--cyan-soft);
+  background:
+    linear-gradient(135deg, rgba(41, 220, 255, 0.1), transparent 48%),
+    rgba(16, 50, 91, 0.54);
+  box-shadow:
+    inset 0 0 0 1px rgba(41, 220, 255, 0.08),
+    0 0 22px rgba(41, 220, 255, 0.08);
+}
+
+.nav-button.is-active,
+.nav-button:hover,
+.nav-button:focus-visible,
+.return-button:hover,
+.return-button:focus-visible,
+.decade-button.is-active,
+.decade-button:hover,
+.decade-button:focus-visible,
+.interactive-card:hover,
+.interactive-card:focus-visible,
+.interactive-card.is-active {
+  color: #ecfbff;
+  background:
+    linear-gradient(135deg, rgba(41, 220, 255, 0.28), rgba(67, 125, 255, 0.18)),
+    rgba(22, 77, 132, 0.78);
+  border-color: rgba(41, 220, 255, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(41, 220, 255, 0.28),
+    0 0 34px rgba(41, 220, 255, 0.18);
+}
+
+.nav-button.is-active small,
+.nav-button:hover small,
+.nav-button:focus-visible small {
+  color: rgba(236, 251, 255, 0.76);
+}
+
+.middle-panel {
+  border-right: 0;
+  background: rgba(3, 16, 34, 0.28);
+}
+
+.wall-header,
+.interactive-header,
+.nobel-footer {
+  border-color: rgba(41, 220, 255, 0.28);
+}
+
+.middle-panel .wall-header {
+  margin-bottom: clamp(12px, 0.8vw, 20px);
+}
+
+.middle-panel .wall-header p {
+  color: var(--cyan);
+}
+
+.nobel-layout {
+  gap: clamp(18px, 1.15vw, 30px);
+}
+
+.nobel-footer {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(16px, 1vw, 28px);
+  margin-top: clamp(14px, 0.9vw, 22px);
+  padding-top: clamp(14px, 0.9vw, 22px);
+  border-top: 1px solid rgba(41, 220, 255, 0.28);
+}
+
+.nobel-footer span {
+  font-size: clamp(18px, 1vw, 28px);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.middle-panel .decade-nav {
+  max-width: none;
+  justify-content: flex-start;
+}
+
+.middle-panel .decade-button {
+  min-height: clamp(54px, 3vw, 76px);
+  padding: 0 clamp(18px, 1.1vw, 30px);
+  font-size: clamp(18px, 0.95vw, 26px);
+}
+
+.laureate-card,
+.detail-panel,
+.interactive-welcome,
+.embed-stage,
+.market-focus-module {
+  color: #f2fbff;
+  background:
+    linear-gradient(135deg, rgba(41, 220, 255, 0.1), transparent 46%),
+    var(--glass);
+  border: 1px solid var(--cyan-soft);
+  box-shadow:
+    inset 0 0 0 1px rgba(41, 220, 255, 0.08),
+    0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+.laureate-card {
+  border-top: 1px solid var(--cyan-soft);
+}
+
+.laureate-card::before,
+.detail-panel::before {
+  background:
+    linear-gradient(90deg, rgba(41, 220, 255, 0.12), transparent 18%, transparent 82%, rgba(41, 220, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%);
+}
+
+.laureate-card.is-active {
+  background:
+    linear-gradient(135deg, rgba(41, 220, 255, 0.2), rgba(67, 125, 255, 0.12)),
+    rgba(16, 50, 91, 0.74);
+  border-color: rgba(41, 220, 255, 0.74);
+  box-shadow:
+    inset 0 0 0 1px rgba(41, 220, 255, 0.28),
+    0 0 30px rgba(41, 220, 255, 0.16);
+}
+
+.card-meta,
+.detail-head p,
+.detail-panel section p,
+.interactive-welcome p,
+.game-module p,
+.market-focus-module p,
+.interactive-card small {
+  color: rgba(226, 246, 255, 0.74);
+}
+
+.detail-panel {
+  border-left: 1px solid var(--cyan-soft);
+}
+
+blockquote {
+  background: rgba(41, 220, 255, 0.08);
+  border-left-color: rgba(41, 220, 255, 0.82);
+}
+
+.interactive-layout {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 1.1vw, 30px);
+}
+
+.interactive-layout > .embed-stage,
+.interactive-layout > .interactive-welcome {
+  flex: 1 1 auto;
+}
+
+.interactive-actions {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 0.9vw, 24px);
+}
+
+.interactive-actions .interactive-card {
+  min-height: clamp(136px, 7vw, 190px);
+}
+
+.embed-toolbar {
+  border-bottom-color: rgba(41, 220, 255, 0.2);
+  background: rgba(4, 18, 40, 0.72);
+}
+
+.embed-toolbar a {
+  color: #061126;
+  background: var(--cyan);
+}
+
 @keyframes detail-reveal {
   from {
     opacity: 0;
@@ -1072,9 +1280,13 @@ blockquote::before {
 
   .middle-panel .wall-header,
   .nobel-layout,
-  .interactive-header,
-  .interactive-layout {
+  .interactive-header {
     display: block;
+  }
+
+  .interactive-layout {
+    display: flex;
+    flex-direction: column;
   }
 
   .middle-panel .wall-header h2,
@@ -1100,9 +1312,8 @@ blockquote::before {
     overflow-y: auto;
   }
 
-  .interactive-menu {
+  .interactive-actions {
     grid-template-columns: 1fr;
-    margin-bottom: 14px;
   }
 
   .interactive-card {
@@ -1115,7 +1326,7 @@ blockquote::before {
   }
 
   .embed-stage {
-    height: calc(100vh - 190px);
+    min-height: 0;
   }
 
   .return-button {

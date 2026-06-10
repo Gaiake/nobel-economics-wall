@@ -67,6 +67,9 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
     ".middle-panel",
     "overflow: hidden",
     ".interactive-module",
+    "--cyan",
+    ".nobel-footer",
+    ".interactive-actions",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
