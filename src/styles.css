@@ -1042,21 +1042,118 @@ blockquote::before {
   font-size: 24px;
 }
 
-@media (max-width: 1100px) {
-  .wall-header,
-  .wall-layout {
+@media (max-width: 1200px) {
+  .screen-shell {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .screen-shell::after {
+    content: "单屏调试：左三屏";
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 10;
+    padding: 8px 12px;
+    color: rgba(246, 239, 223, 0.72);
+    background: rgba(16, 25, 24, 0.72);
+    border: 1px solid rgba(246, 239, 223, 0.12);
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .market-panel {
+    display: none;
+  }
+
+  .nav-panel {
+    gap: 18px;
+    padding: 22px 16px;
+  }
+
+  .nav-brand p {
+    font-size: 20px;
+  }
+
+  .nav-brand h1 {
+    font-size: 42px;
+  }
+
+  .nav-clock {
+    padding: 14px;
+  }
+
+  .nav-clock strong {
+    font-size: 26px;
+  }
+
+  .nav-button {
+    min-height: 104px;
+    padding: 16px;
+  }
+
+  .nav-button span {
+    font-size: 26px;
+  }
+
+  .nav-button small,
+  .nav-idle {
+    font-size: 16px;
+  }
+
+  .middle-panel {
+    padding: 18px;
+  }
+
+  .middle-panel .wall-header,
+  .nobel-layout,
+  .interactive-header,
+  .interactive-layout {
     display: block;
   }
 
-  .decade-nav {
-    justify-content: flex-start;
-    max-width: none;
-    margin-top: 18px;
+  .middle-panel .wall-header h2,
+  .interactive-header h2,
+  .market-focus-module h2 {
+    font-size: 34px;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    margin-bottom: 18px;
+  .middle-panel .decade-nav {
+    justify-content: flex-start;
+    max-width: none;
+    margin-top: 14px;
+  }
+
+  .nobel-layout .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 42vh;
+    margin-bottom: 14px;
+  }
+
+  .nobel-layout .detail-panel {
+    max-height: calc(58vh - 86px);
+    overflow-y: auto;
+  }
+
+  .interactive-menu {
+    grid-template-columns: 1fr;
+    margin-bottom: 14px;
+  }
+
+  .interactive-card {
+    min-height: 132px;
+    padding: 18px;
+  }
+
+  .interactive-card strong {
+    font-size: 30px;
+  }
+
+  .embed-stage {
+    height: calc(100vh - 190px);
+  }
+
+  .return-button {
+    margin-top: 14px;
   }
 }
 

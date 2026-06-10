@@ -72,3 +72,16 @@ test("six-screen shell styles reserve the 1:2:3 display regions", () => {
     assert.ok(css.includes(token), `missing ${token}`);
   }
 });
+
+test("single-display debug styles show only the left three panels", () => {
+  for (const token of [
+    "@media (max-width: 1200px)",
+    "grid-template-columns: 1fr 2fr",
+    ".market-panel",
+    "display: none",
+    ".screen-shell::after",
+    "单屏调试",
+  ]) {
+    assert.ok(css.includes(token), `missing ${token}`);
+  }
+});
