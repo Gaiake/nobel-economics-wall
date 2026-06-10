@@ -75,10 +75,6 @@ function renderNavigation() {
           `,
         ).join("")}
       </nav>
-      <div class="nav-idle">
-        <strong>空闲回退</strong>
-        <span>5 分钟无触屏自动回到诺奖展示</span>
-      </div>
     </aside>
   `;
 }

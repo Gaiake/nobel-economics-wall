@@ -558,19 +558,6 @@ blockquote::before {
   color: rgba(16, 25, 24, 0.72);
 }
 
-.nav-idle {
-  margin-top: auto;
-  display: grid;
-  gap: 6px;
-  color: rgba(246, 239, 223, 0.66);
-  font-size: clamp(17px, 0.95vw, 26px);
-}
-
-.nav-idle strong {
-  color: var(--panel);
-  font-size: clamp(21px, 1.15vw, 32px);
-}
-
 .middle-panel {
   padding: clamp(20px, 1.28vw, 42px);
   border-right: 1px solid rgba(210, 168, 77, 0.18);
@@ -1354,8 +1341,7 @@ blockquote {
     font-size: 26px;
   }
 
-  .nav-button small,
-  .nav-idle {
+  .nav-button small {
     font-size: 16px;
   }
 
