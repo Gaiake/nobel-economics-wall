@@ -72,6 +72,7 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
     ".interactive-actions",
     ".embed-stage.is-compact",
     ".embed-frame-wrap",
+    "aspect-ratio: 9 / 16",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
