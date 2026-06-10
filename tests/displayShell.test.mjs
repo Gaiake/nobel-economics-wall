@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  APP_DISPLAY,
   DISPLAY,
   IDLE_RESET_MS,
   INVESTOR_GAMES,
@@ -14,18 +15,28 @@ import {
 test("display constants match the six-screen wall", () => {
   assert.deepEqual(DISPLAY, {
     width: 6480,
-    height: 1980,
+    height: 1920,
     panelWidth: 1080,
-    panelHeight: 1980,
+    panelHeight: 1920,
     panels: 6,
+  });
+});
+
+test("app display constants match the left three-screen browser area", () => {
+  assert.deepEqual(APP_DISPLAY, {
+    width: 3240,
+    height: 1920,
+    panelWidth: 1080,
+    panelHeight: 1920,
+    panels: 3,
   });
 });
 
 test("display regions split the wall into navigation, middle, and market areas", () => {
   assert.deepEqual(getDisplayRegions(), {
-    nav: { x: 0, y: 0, width: 1080, height: 1980 },
-    middle: { x: 1080, y: 0, width: 2160, height: 1980 },
-    market: { x: 3240, y: 0, width: 3240, height: 1980 },
+    nav: { x: 0, y: 0, width: 1080, height: 1920 },
+    middle: { x: 1080, y: 0, width: 2160, height: 1920 },
+    market: { x: 3240, y: 0, width: 3240, height: 1920 },
   });
 });
 

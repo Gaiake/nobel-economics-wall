@@ -1,4 +1,5 @@
 import {
+  APP_DISPLAY,
   DEFAULT_MODULE,
   FUTURES_BOOKCASE_URL,
   INVESTOR_GAMES,
@@ -62,10 +63,11 @@ function renderNavigation() {
       <div class="nav-brand">
         <p>浙江大学经济学院</p>
         <h1>学科思政基地</h1>
+        <span>求是创新 · 经世济民</span>
       </div>
       <div class="nav-clock">
-        <span>六屏总控</span>
-        <strong>6480 × 1980</strong>
+        <span>左三屏互动区</span>
+        <strong>${APP_DISPLAY.width} × ${APP_DISPLAY.height}</strong>
       </div>
       <nav class="nav-actions">
         ${NAV_ITEMS.map(
@@ -258,26 +260,10 @@ function renderMarketNewsModule() {
       <p>该模块常规展示在右侧三屏。请将同花顺客户端或网页窗口固定到右侧区域，左侧导航与中间两屏继续作为互动总控。</p>
       <div class="market-coordinate">
         <span>右侧窗口区域</span>
-        <strong>x=3240 · y=0 · width=3240 · height=1980</strong>
+        <strong>x=3240 · y=0 · width=3240 · height=1920</strong>
       </div>
       <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
     </section>
-  `;
-}
-
-function renderMarketGuide() {
-  return `
-    <aside class="market-panel" aria-label="同花顺窗口区域">
-      <div>
-        <p>右侧三屏区域</p>
-        <h2>同花顺实时行情 + 新闻</h2>
-      </div>
-      <ul>
-        <li>建议将同花顺客户端或浏览器窗口固定到此区域</li>
-        <li>窗口坐标：x=3240, y=0, width=3240, height=1980</li>
-        <li>网页总控只管理左侧导航和中间互动区域</li>
-      </ul>
-    </aside>
   `;
 }
 
@@ -295,7 +281,6 @@ function render() {
       <main class="middle-panel">
         ${renderMiddleModule()}
       </main>
-      ${renderMarketGuide()}
     </section>
   `;
 }

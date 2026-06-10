@@ -1,9 +1,17 @@
 export const DISPLAY = {
   width: 6480,
-  height: 1980,
+  height: 1920,
   panelWidth: 1080,
-  panelHeight: 1980,
+  panelHeight: 1920,
   panels: 6,
+};
+
+export const APP_DISPLAY = {
+  width: DISPLAY.panelWidth * 3,
+  height: DISPLAY.panelHeight,
+  panelWidth: DISPLAY.panelWidth,
+  panelHeight: DISPLAY.panelHeight,
+  panels: 3,
 };
 
 export const IDLE_RESET_MS = 5 * 60 * 1000;

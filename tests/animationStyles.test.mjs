@@ -59,26 +59,24 @@ test("person switching does not reanimate the whole card grid", () => {
   assert.equal(app.includes("animation-delay"), false);
 });
 
-test("six-screen shell styles reserve the 1:2:3 display regions", () => {
+test("shell styles reserve the left three-screen 1:2 app region", () => {
   for (const token of [
     ".screen-shell",
-    "grid-template-columns: 1fr 2fr 3fr",
+    "grid-template-columns: 1fr 2fr",
     ".nav-panel",
     ".middle-panel",
-    ".market-panel",
     "overflow: hidden",
-    ".game-module",
+    ".interactive-module",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
+  assert.ok(app.includes("求是创新 · 经世济民"), "missing college motto text");
 });
 
 test("single-display debug styles show only the left three panels", () => {
   for (const token of [
     "@media (max-width: 1200px)",
     "grid-template-columns: 1fr 2fr",
-    ".market-panel",
-    "display: none",
     ".screen-shell::after",
     "单屏调试",
   ]) {
