@@ -1128,25 +1128,26 @@ blockquote {
 }
 
 .interactive-layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.34fr) minmax(0, 1fr);
+  align-items: stretch;
   gap: clamp(18px, 1.1vw, 30px);
 }
 
 .interactive-layout > .embed-stage,
 .interactive-layout > .interactive-welcome {
-  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .interactive-actions {
-  flex: 0 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: center;
+  grid-template-columns: 1fr;
   gap: clamp(14px, 0.9vw, 24px);
 }
 
 .interactive-actions .interactive-card {
-  min-height: clamp(136px, 7vw, 190px);
+  min-height: clamp(150px, 8vw, 220px);
 }
 
 .embed-toolbar {
@@ -1285,8 +1286,8 @@ blockquote {
   }
 
   .interactive-layout {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(190px, 0.42fr) minmax(0, 1fr);
   }
 
   .middle-panel .wall-header h2,
@@ -1317,12 +1318,12 @@ blockquote {
   }
 
   .interactive-card {
-    min-height: 132px;
-    padding: 18px;
+    min-height: 118px;
+    padding: 14px;
   }
 
   .interactive-card strong {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .embed-stage {

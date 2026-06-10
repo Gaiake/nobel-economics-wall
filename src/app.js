@@ -208,17 +208,6 @@ function renderInvestorGamesModule() {
         <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
       </header>
       <div class="interactive-layout ${activeEmbed.url ? "has-frame" : ""}">
-        ${
-          activeEmbed.url
-            ? renderEmbedFrame(activeEmbed.title, activeEmbed.url)
-            : `
-              <section class="interactive-welcome">
-                <span>请选择左侧游戏</span>
-                <strong>触屏后在中间两屏内打开互动内容</strong>
-                <p>5 分钟无操作会自动回到诺贝尔经济学奖展示。</p>
-              </section>
-            `
-        }
         <div class="interactive-actions" aria-label="投教小游戏列表">
           ${INVESTOR_GAMES.map(
             (game) => `
@@ -230,6 +219,17 @@ function renderInvestorGamesModule() {
             `,
           ).join("")}
         </div>
+        ${
+          activeEmbed.url
+            ? renderEmbedFrame(activeEmbed.title, activeEmbed.url)
+            : `
+              <section class="interactive-welcome">
+                <span>请选择左侧游戏</span>
+                <strong>触屏后在中间两屏内打开互动内容</strong>
+                <p>5 分钟无操作会自动回到诺贝尔经济学奖展示。</p>
+              </section>
+            `
+        }
       </div>
     </section>
   `;
