@@ -8,27 +8,46 @@ export const DISPLAY = {
 
 export const IDLE_RESET_MS = 5 * 60 * 1000;
 export const DEFAULT_MODULE = "nobel";
+export const FUTURES_BOOKCASE_URL = "https://book.yunzhan365.com/bookcase/bgmtc/index.html?foldId=-1";
+
+export const INVESTOR_GAMES = [
+  {
+    title: "期货玩家",
+    description: "用游戏方式理解期货交易与风险管理。",
+    url: "https://work.jingjia-tech.com/csm/game/zzb1.html",
+  },
+  {
+    title: "红色证券史",
+    description: "在互动探索中了解中国证券市场的发展脉络。",
+    url: "https://spa.museshow.cn/csm/game/finder/",
+  },
+  {
+    title: "中国证券博物馆",
+    description: "通过数字展陈走近证券文化与金融历史。",
+    url: "https://spa.museshow.cn/csm/game/diary/",
+  },
+];
 
 export const NAV_ITEMS = [
+  {
+    id: "investor-games",
+    label: "投教小游戏",
+    description: "上交所投教",
+  },
   {
     id: "nobel",
     label: "诺奖经济学家",
     description: "默认展示",
   },
   {
-    id: "game-market",
-    label: "市场竞价",
-    description: "互动小游戏",
+    id: "futures-books",
+    label: "电子书橱",
+    description: "期货所资源",
   },
   {
-    id: "game-auction",
-    label: "拍卖实验",
-    description: "互动小游戏",
-  },
-  {
-    id: "game-allocation",
-    label: "资源配置",
-    description: "互动小游戏",
+    id: "market-news",
+    label: "行情新闻",
+    description: "右侧三屏",
   },
 ];
 

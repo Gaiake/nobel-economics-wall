@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import {
   DISPLAY,
   IDLE_RESET_MS,
+  INVESTOR_GAMES,
+  FUTURES_BOOKCASE_URL,
   getDisplayRegions,
   getInitialShellState,
   getNextShellState,
@@ -35,8 +37,8 @@ test("shell starts on the default Nobel module", () => {
 });
 
 test("navigation changes the middle module and records interaction time", () => {
-  assert.deepEqual(getNextShellState(getInitialShellState(1000), "game-market", 2000), {
-    activeModule: "game-market",
+  assert.deepEqual(getNextShellState(getInitialShellState(1000), "investor-games", 2000), {
+    activeModule: "investor-games",
     lastInteractionAt: 2000,
   });
 });
@@ -50,6 +52,21 @@ test("idle timeout returns the middle region to Nobel display", () => {
 test("navigation exposes the default and game modules", () => {
   assert.deepEqual(
     NAV_ITEMS.map((item) => item.id),
-    ["nobel", "game-market", "game-auction", "game-allocation"],
+    ["investor-games", "nobel", "futures-books", "market-news"],
   );
+});
+
+test("investor education module exposes the three configured game links", () => {
+  assert.deepEqual(
+    INVESTOR_GAMES.map((item) => [item.title, item.url]),
+    [
+      ["期货玩家", "https://work.jingjia-tech.com/csm/game/zzb1.html"],
+      ["红色证券史", "https://spa.museshow.cn/csm/game/finder/"],
+      ["中国证券博物馆", "https://spa.museshow.cn/csm/game/diary/"],
+    ],
+  );
+});
+
+test("futures bookcase module uses the configured electronic bookcase link", () => {
+  assert.equal(FUTURES_BOOKCASE_URL, "https://book.yunzhan365.com/bookcase/bgmtc/index.html?foldId=-1");
 });

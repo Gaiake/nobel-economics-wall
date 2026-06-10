@@ -1,5 +1,7 @@
 import {
   DEFAULT_MODULE,
+  FUTURES_BOOKCASE_URL,
+  INVESTOR_GAMES,
   NAV_ITEMS,
   getInitialShellState,
   getNextShellState,
@@ -20,6 +22,10 @@ let shellState = getInitialShellState();
 let nobelState = {
   activeDecade: "",
   activeLaureateId: "",
+};
+let activeEmbed = {
+  title: "",
+  url: "",
 };
 let nobelTimer = null;
 let shellTimer = null;
@@ -176,16 +182,83 @@ function renderNobelModule() {
   `;
 }
 
-function renderGameModule() {
-  const item = NAV_ITEMS.find((entry) => entry.id === shellState.activeModule);
+function renderEmbedFrame(title, url) {
   return `
-    <section class="middle-module game-module">
-      <div class="game-kicker">互动小游戏</div>
-      <h2>${escapeHtml(item?.label ?? "互动小游戏")}</h2>
-      <p>该区域覆盖第 2-3 块屏幕，不影响右侧同花顺行情新闻窗口。</p>
-      <div class="game-placeholder">
-        <span>后续接入游戏内容</span>
-        <strong>${escapeHtml(item?.description ?? "互动模块")}</strong>
+    <section class="embed-stage" aria-label="${escapeHtml(title)}">
+      <div class="embed-toolbar">
+        <div>
+          <span>正在展示</span>
+          <strong>${escapeHtml(title)}</strong>
+        </div>
+        <a href="${escapeHtml(url)}" target="_blank" rel="noopener">新窗口打开</a>
+      </div>
+      <iframe class="embed-frame" src="${escapeHtml(url)}" title="${escapeHtml(title)}"></iframe>
+    </section>
+  `;
+}
+
+function renderInvestorGamesModule() {
+  return `
+    <section class="middle-module interactive-module">
+      <header class="interactive-header">
+        <div>
+          <p>模块一</p>
+          <h2>上交所投教小游戏</h2>
+        </div>
+        <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
+      </header>
+      <div class="interactive-layout ${activeEmbed.url ? "has-frame" : ""}">
+        <div class="interactive-menu" aria-label="投教小游戏列表">
+          ${INVESTOR_GAMES.map(
+            (game) => `
+              <button class="interactive-card ${game.url === activeEmbed.url ? "is-active" : ""}" data-embed-title="${escapeHtml(game.title)}" data-embed-url="${escapeHtml(game.url)}">
+                <span>投教互动</span>
+                <strong>${escapeHtml(game.title)}</strong>
+                <small>${escapeHtml(game.description)}</small>
+              </button>
+            `,
+          ).join("")}
+        </div>
+        ${
+          activeEmbed.url
+            ? renderEmbedFrame(activeEmbed.title, activeEmbed.url)
+            : `
+              <section class="interactive-welcome">
+                <span>请选择左侧游戏</span>
+                <strong>触屏后在中间两屏内打开互动内容</strong>
+                <p>5 分钟无操作会自动回到诺贝尔经济学奖展示。</p>
+              </section>
+            `
+        }
+      </div>
+    </section>
+  `;
+}
+
+function renderBookcaseModule() {
+  return `
+    <section class="middle-module interactive-module">
+      <header class="interactive-header">
+        <div>
+          <p>模块三</p>
+          <h2>上海期货交易所电子书橱</h2>
+        </div>
+        <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
+      </header>
+      ${renderEmbedFrame("上海期货交易所电子书橱", FUTURES_BOOKCASE_URL)}
+    </section>
+  `;
+}
+
+function renderMarketNewsModule() {
+  return `
+    <section class="middle-module market-focus-module">
+      <div class="game-kicker">模块四</div>
+      <h2>同花顺全球股市行情、新闻</h2>
+      <p>该模块常规展示在右侧三屏。请将同花顺客户端或网页窗口固定到右侧区域，左侧导航与中间两屏继续作为互动总控。</p>
+      <div class="market-coordinate">
+        <span>右侧窗口区域</span>
+        <strong>x=3240 · y=0 · width=3240 · height=1980</strong>
       </div>
       <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
     </section>
@@ -209,7 +282,10 @@ function renderMarketGuide() {
 }
 
 function renderMiddleModule() {
-  return shellState.activeModule === DEFAULT_MODULE ? renderNobelModule() : renderGameModule();
+  if (shellState.activeModule === "investor-games") return renderInvestorGamesModule();
+  if (shellState.activeModule === "futures-books") return renderBookcaseModule();
+  if (shellState.activeModule === "market-news") return renderMarketNewsModule();
+  return renderNobelModule();
 }
 
 function render() {
@@ -247,11 +323,22 @@ function handleClick(event) {
   markInteraction();
 
   const moduleButton = event.target.closest("[data-module]");
+  const embedButton = event.target.closest("[data-embed-url]");
   const decadeButton = event.target.closest("[data-decade]");
   const laureateCard = event.target.closest("[data-id]");
 
+  if (embedButton) {
+    activeEmbed = {
+      title: embedButton.dataset.embedTitle,
+      url: embedButton.dataset.embedUrl,
+    };
+    render();
+    return;
+  }
+
   if (moduleButton) {
     shellState = getNextShellState(shellState, moduleButton.dataset.module);
+    activeEmbed = { title: "", url: "" };
     render();
     resetNobelAutoAdvance();
     return;
@@ -283,6 +370,7 @@ function startShellIdleTimer() {
     const nextState = getNextShellState(shellState, "tick");
     if (nextState.activeModule !== shellState.activeModule) {
       shellState = nextState;
+      activeEmbed = { title: "", url: "" };
       render();
       resetNobelAutoAdvance();
       return;
@@ -306,6 +394,7 @@ async function boot() {
     laureates = await response.json();
     nobelState = getInitialSelection(laureates);
     shellState = getInitialShellState();
+    activeEmbed = { title: "", url: "" };
     app.addEventListener("click", handleClick);
     bindGlobalActivity();
     render();
