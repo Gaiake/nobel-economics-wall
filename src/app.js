@@ -1,5 +1,4 @@
 import {
-  APP_DISPLAY,
   DEFAULT_MODULE,
   FUTURES_BOOKCASE_URL,
   INVESTOR_GAMES,
@@ -63,11 +62,7 @@ function renderNavigation() {
       <div class="nav-brand">
         <p>浙江大学经济学院</p>
         <h1>学科思政基地</h1>
-        <span>求是创新 · 经世济民</span>
-      </div>
-      <div class="nav-clock">
-        <span>左三屏互动区</span>
-        <strong>${APP_DISPLAY.width} × ${APP_DISPLAY.height}</strong>
+        <span>执善向上 · 经世济民</span>
       </div>
       <nav class="nav-actions">
         ${NAV_ITEMS.map(
@@ -239,7 +234,7 @@ function renderInvestorGamesModule() {
 
 function renderBookcaseModule() {
   return `
-    <section class="middle-module interactive-module">
+    <section class="middle-module interactive-module bookcase-module">
       <header class="interactive-header">
         <div>
           <p>模块三</p>
@@ -252,25 +247,9 @@ function renderBookcaseModule() {
   `;
 }
 
-function renderMarketNewsModule() {
-  return `
-    <section class="middle-module market-focus-module">
-      <div class="game-kicker">模块四</div>
-      <h2>同花顺全球股市行情、新闻</h2>
-      <p>该模块常规展示在右侧三屏。请将同花顺客户端或网页窗口固定到右侧区域，左侧导航与中间两屏继续作为互动总控。</p>
-      <div class="market-coordinate">
-        <span>右侧窗口区域</span>
-        <strong>x=3240 · y=0 · width=3240 · height=1920</strong>
-      </div>
-      <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
-    </section>
-  `;
-}
-
 function renderMiddleModule() {
   if (shellState.activeModule === "investor-games") return renderInvestorGamesModule();
   if (shellState.activeModule === "futures-books") return renderBookcaseModule();
-  if (shellState.activeModule === "market-news") return renderMarketNewsModule();
   return renderNobelModule();
 }
 

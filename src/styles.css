@@ -471,7 +471,6 @@ blockquote::before {
 }
 
 .nav-brand p,
-.nav-clock span,
 .game-kicker {
   margin: 0;
   color: var(--gold);
@@ -497,19 +496,6 @@ blockquote::before {
   font-size: clamp(20px, 1.12vw, 34px);
   font-weight: 900;
   line-height: 1.2;
-}
-
-.nav-clock {
-  display: grid;
-  gap: 8px;
-  padding: clamp(18px, 1.4vw, 30px);
-  border: 1px solid rgba(246, 239, 223, 0.12);
-  background: rgba(246, 239, 223, 0.055);
-}
-
-.nav-clock strong {
-  font-size: clamp(30px, 1.9vw, 52px);
-  line-height: 1;
 }
 
 .nav-actions {
@@ -888,6 +874,10 @@ blockquote::before {
   overflow: hidden;
 }
 
+.bookcase-module > .embed-stage {
+  flex: 1 1 auto;
+}
+
 .embed-toolbar {
   display: flex;
   align-items: center;
@@ -1060,14 +1050,6 @@ blockquote::before {
 
   .nav-brand span {
     font-size: 18px;
-  }
-
-  .nav-clock {
-    padding: 14px;
-  }
-
-  .nav-clock strong {
-    font-size: 26px;
   }
 
   .nav-button {

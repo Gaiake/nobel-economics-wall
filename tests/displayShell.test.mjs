@@ -63,7 +63,7 @@ test("idle timeout returns the middle region to Nobel display", () => {
 test("navigation exposes the default and game modules", () => {
   assert.deepEqual(
     NAV_ITEMS.map((item) => item.id),
-    ["investor-games", "nobel", "futures-books", "market-news"],
+    ["nobel", "investor-games", "futures-books"],
   );
 });
 

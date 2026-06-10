@@ -38,24 +38,19 @@ export const INVESTOR_GAMES = [
 
 export const NAV_ITEMS = [
   {
-    id: "investor-games",
-    label: "投教小游戏",
-    description: "上交所投教",
-  },
-  {
     id: "nobel",
     label: "诺奖经济学家",
     description: "默认展示",
   },
   {
+    id: "investor-games",
+    label: "投教小游戏",
+    description: "上交所投教",
+  },
+  {
     id: "futures-books",
     label: "电子书橱",
     description: "期货所资源",
-  },
-  {
-    id: "market-news",
-    label: "行情新闻",
-    description: "右侧三屏",
   },
 ];
 
