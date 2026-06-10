@@ -70,6 +70,8 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
     "--cyan",
     ".nobel-footer",
     ".interactive-actions",
+    ".embed-stage.is-compact",
+    ".embed-frame-wrap",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }

@@ -24,6 +24,7 @@ let nobelState = {
   activeLaureateId: "",
 };
 let activeEmbed = {
+  frameMode: "wide",
   title: "",
   url: "",
 };
@@ -182,9 +183,9 @@ function renderNobelModule() {
   `;
 }
 
-function renderEmbedFrame(title, url) {
+function renderEmbedFrame(title, url, frameMode = "wide") {
   return `
-    <section class="embed-stage" aria-label="${escapeHtml(title)}">
+    <section class="embed-stage is-${escapeHtml(frameMode)}" aria-label="${escapeHtml(title)}">
       <div class="embed-toolbar">
         <div>
           <span>正在展示</span>
@@ -192,7 +193,9 @@ function renderEmbedFrame(title, url) {
         </div>
         <a href="${escapeHtml(url)}" target="_blank" rel="noopener">新窗口打开</a>
       </div>
-      <iframe class="embed-frame" src="${escapeHtml(url)}" title="${escapeHtml(title)}"></iframe>
+      <div class="embed-frame-wrap">
+        <iframe class="embed-frame" src="${escapeHtml(url)}" title="${escapeHtml(title)}"></iframe>
+      </div>
     </section>
   `;
 }
@@ -211,7 +214,7 @@ function renderInvestorGamesModule() {
         <div class="interactive-actions" aria-label="投教小游戏列表">
           ${INVESTOR_GAMES.map(
             (game) => `
-              <button class="interactive-card ${game.url === activeEmbed.url ? "is-active" : ""}" data-embed-title="${escapeHtml(game.title)}" data-embed-url="${escapeHtml(game.url)}">
+              <button class="interactive-card ${game.url === activeEmbed.url ? "is-active" : ""}" data-embed-title="${escapeHtml(game.title)}" data-embed-url="${escapeHtml(game.url)}" data-embed-mode="${escapeHtml(game.frameMode ?? "wide")}">
                 <span>投教互动</span>
                 <strong>${escapeHtml(game.title)}</strong>
                 <small>${escapeHtml(game.description)}</small>
@@ -221,7 +224,7 @@ function renderInvestorGamesModule() {
         </div>
         ${
           activeEmbed.url
-            ? renderEmbedFrame(activeEmbed.title, activeEmbed.url)
+            ? renderEmbedFrame(activeEmbed.title, activeEmbed.url, activeEmbed.frameMode)
             : `
               <section class="interactive-welcome">
                 <span>请选择左侧游戏</span>
@@ -298,6 +301,7 @@ function handleClick(event) {
     activeEmbed = {
       title: embedButton.dataset.embedTitle,
       url: embedButton.dataset.embedUrl,
+      frameMode: embedButton.dataset.embedMode || "wide",
     };
     render();
     return;
@@ -305,7 +309,7 @@ function handleClick(event) {
 
   if (moduleButton) {
     shellState = getNextShellState(shellState, moduleButton.dataset.module);
-    activeEmbed = { title: "", url: "" };
+    activeEmbed = { frameMode: "wide", title: "", url: "" };
     render();
     resetNobelAutoAdvance();
     return;
@@ -337,7 +341,7 @@ function startShellIdleTimer() {
     const nextState = getNextShellState(shellState, "tick");
     if (nextState.activeModule !== shellState.activeModule) {
       shellState = nextState;
-      activeEmbed = { title: "", url: "" };
+      activeEmbed = { frameMode: "wide", title: "", url: "" };
       render();
       resetNobelAutoAdvance();
       return;
@@ -361,7 +365,7 @@ async function boot() {
     laureates = await response.json();
     nobelState = getInitialSelection(laureates);
     shellState = getInitialShellState();
-    activeEmbed = { title: "", url: "" };
+    activeEmbed = { frameMode: "wide", title: "", url: "" };
     app.addEventListener("click", handleClick);
     bindGlobalActivity();
     render();

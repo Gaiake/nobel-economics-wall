@@ -23,6 +23,7 @@ export const INVESTOR_GAMES = [
     title: "期货玩家",
     description: "用游戏方式理解期货交易与风险管理。",
     url: "https://work.jingjia-tech.com/csm/game/zzb1.html",
+    frameMode: "compact",
   },
   {
     title: "红色证券史",

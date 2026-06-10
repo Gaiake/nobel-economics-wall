@@ -69,11 +69,11 @@ test("navigation exposes the default and game modules", () => {
 
 test("investor education module exposes the three configured game links", () => {
   assert.deepEqual(
-    INVESTOR_GAMES.map((item) => [item.title, item.url]),
+    INVESTOR_GAMES.map((item) => [item.title, item.url, item.frameMode ?? "wide"]),
     [
-      ["期货玩家", "https://work.jingjia-tech.com/csm/game/zzb1.html"],
-      ["红色证券史", "https://spa.museshow.cn/csm/game/finder/"],
-      ["中国证券博物馆", "https://spa.museshow.cn/csm/game/diary/"],
+      ["期货玩家", "https://work.jingjia-tech.com/csm/game/zzb1.html", "compact"],
+      ["红色证券史", "https://spa.museshow.cn/csm/game/finder/", "wide"],
+      ["中国证券博物馆", "https://spa.museshow.cn/csm/game/diary/", "wide"],
     ],
   );
 });

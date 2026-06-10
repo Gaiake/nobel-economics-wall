@@ -916,10 +916,15 @@ blockquote::before {
   text-decoration: none;
 }
 
-.embed-frame {
+.embed-frame-wrap {
   flex: 1 1 auto;
-  width: 100%;
+  display: grid;
   min-height: 0;
+}
+
+.embed-frame {
+  width: 100%;
+  height: 100%;
   border: 0;
   background: #fff;
 }
@@ -1158,6 +1163,24 @@ blockquote {
 .embed-toolbar a {
   color: #061126;
   background: var(--cyan);
+}
+
+.embed-stage.is-compact .embed-frame-wrap {
+  place-items: center;
+  padding: clamp(18px, 1.2vw, 34px);
+  background:
+    radial-gradient(circle at 50% 34%, rgba(41, 220, 255, 0.16), transparent 42%),
+    rgba(3, 16, 34, 0.42);
+}
+
+.embed-stage.is-compact .embed-frame {
+  width: min(100%, 860px);
+  height: min(100%, 1280px);
+  aspect-ratio: 9 / 14;
+  border: 1px solid rgba(41, 220, 255, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(41, 220, 255, 0.16),
+    0 24px 58px rgba(0, 0, 0, 0.32);
 }
 
 @keyframes detail-reveal {
