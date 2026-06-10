@@ -202,15 +202,14 @@ function renderEmbedFrame(title, url, frameMode = "wide") {
 
 function renderInvestorGamesModule() {
   return `
-    <section class="middle-module interactive-module">
-      <header class="interactive-header">
-        <div>
-          <p>模块一</p>
-          <h2>上交所投教小游戏</h2>
-        </div>
-        <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
-      </header>
-      <div class="interactive-layout ${activeEmbed.url ? "has-frame" : ""}">
+    <section class="middle-module interactive-module game-screen-split">
+      <aside class="interactive-rail">
+        <header class="interactive-header">
+          <div>
+            <p>模块一</p>
+            <h2>上交所投教小游戏</h2>
+          </div>
+        </header>
         <div class="interactive-actions" aria-label="投教小游戏列表">
           ${INVESTOR_GAMES.map(
             (game) => `
@@ -222,6 +221,9 @@ function renderInvestorGamesModule() {
             `,
           ).join("")}
         </div>
+        <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
+      </aside>
+      <div class="game-display-panel ${activeEmbed.url ? "has-frame" : ""}">
         ${
           activeEmbed.url
             ? renderEmbedFrame(activeEmbed.title, activeEmbed.url, activeEmbed.frameMode)
