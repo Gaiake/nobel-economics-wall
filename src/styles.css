@@ -16,6 +16,7 @@
   --electric-blue: #437dff;
   --screen-blue: #0a2d63;
   --glass: rgba(18, 54, 100, 0.46);
+  --title-font: "YouSheBiaoTiHei", "PangMenZhengDao", "Alibaba PuHuiTi", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
   --line-soft: rgba(210, 168, 77, 0.08);
   --museum-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
@@ -483,13 +484,20 @@ blockquote::before {
 }
 
 .nav-brand h1 {
+  display: grid;
+  gap: clamp(6px, 0.42vw, 12px);
   margin: 0;
   color: var(--cyan);
-  font-size: clamp(38px, 2.4vw, 64px);
+  font-family: var(--title-font);
+  font-size: clamp(42px, 2.7vw, 72px);
   line-height: 1.15;
   letter-spacing: 0;
   font-weight: 900;
   text-shadow: 0 0 18px rgba(41, 220, 255, 0.24);
+}
+
+.nav-brand h1 span {
+  display: block;
 }
 
 .nav-actions {
@@ -1318,7 +1326,7 @@ blockquote {
   }
 
   .nav-brand h1 {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   .nav-button {

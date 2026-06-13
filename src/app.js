@@ -61,7 +61,10 @@ function renderNavigation() {
   return `
     <aside class="nav-panel" aria-label="大屏导航">
       <div class="nav-brand">
-        <h1>浙江大学学科思政育人示范基地</h1>
+        <h1>
+          <span>浙江大学</span>
+          <span>学科思政育人示范基地</span>
+        </h1>
       </div>
       <nav class="nav-actions">
         ${NAV_ITEMS.map(

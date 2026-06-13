@@ -68,6 +68,7 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
     "overflow: hidden",
     ".interactive-module",
     "--cyan",
+    "--title-font",
     ".nobel-footer",
     ".interactive-actions",
     ".game-screen-split",
@@ -82,7 +83,9 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
-  assert.ok(app.includes("浙江大学学科思政育人示范基地"), "missing base title text");
+  assert.ok(app.includes('<span>浙江大学</span>'), "base title should put Zhejiang University on its own line");
+  assert.ok(app.includes('<span>学科思政育人示范基地</span>'), "base title should put base name on its own line");
+  assert.ok(css.includes("font-family: var(--title-font)"), "nav title should use the display title font stack");
   assert.equal(app.includes("浙江大学经济学院"), false, "old college label should be removed from nav brand");
   assert.equal(app.includes("执善向上 · 经世济民"), false, "old motto should be removed from nav brand");
   assert.equal(app.includes("APP_DISPLAY"), false, "navigation should not show app dimensions");
