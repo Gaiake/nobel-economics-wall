@@ -67,6 +67,17 @@ test("navigation exposes the default and game modules", () => {
   );
 });
 
+test("navigation content matches the display copy requirements", () => {
+  assert.deepEqual(
+    NAV_ITEMS.map((item) => [item.label, item.description, item.support ?? ""]),
+    [
+      ["诺奖经济学家", "诺贝尔经济学奖获得者", ""],
+      ["投教小游戏", "科普互动游戏", "支持单位：上海证券交易所、中国证券博物馆"],
+      ["电子书橱", "科普电子书橱", "支持单位：上海期货交易所"],
+    ],
+  );
+});
+
 test("investor education module exposes the three configured game links", () => {
   assert.deepEqual(
     INVESTOR_GAMES.map((item) => [item.title, item.url, item.frameMode ?? "wide"]),

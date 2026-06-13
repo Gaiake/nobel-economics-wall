@@ -503,6 +503,16 @@ blockquote::before {
   line-height: 1.2;
 }
 
+.nav-brand em {
+  display: block;
+  margin-top: clamp(10px, 0.7vw, 18px);
+  color: rgba(226, 246, 255, 0.78);
+  font-size: clamp(16px, 0.88vw, 25px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .nav-actions {
   display: grid;
   gap: clamp(14px, 1vw, 24px);
@@ -525,7 +535,7 @@ blockquote::before {
   display: grid;
   gap: 8px;
   width: 100%;
-  min-height: clamp(104px, 6vw, 148px);
+  min-height: clamp(122px, 7vw, 178px);
   padding: clamp(18px, 1.5vw, 34px);
   text-align: left;
 }
@@ -541,6 +551,13 @@ blockquote::before {
   font-size: clamp(18px, 1vw, 28px);
 }
 
+.nav-button b {
+  color: rgba(226, 246, 255, 0.78);
+  font-size: clamp(15px, 0.8vw, 22px);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .nav-button.is-active,
 .nav-button:hover,
 .nav-button:focus-visible,
@@ -553,8 +570,11 @@ blockquote::before {
 }
 
 .nav-button.is-active small,
+.nav-button.is-active b,
 .nav-button:hover small,
-.nav-button:focus-visible small {
+.nav-button:hover b,
+.nav-button:focus-visible small,
+.nav-button:focus-visible b {
   color: rgba(16, 25, 24, 0.72);
 }
 
@@ -963,6 +983,7 @@ blockquote::before {
 
 .nav-brand p,
 .nav-brand span,
+.nav-brand em,
 .game-kicker,
 .detail-year,
 .detail-panel h3,
@@ -1332,8 +1353,12 @@ blockquote {
     font-size: 18px;
   }
 
+  .nav-brand em {
+    font-size: 14px;
+  }
+
   .nav-button {
-    min-height: 104px;
+    min-height: 118px;
     padding: 16px;
   }
 
@@ -1343,6 +1368,10 @@ blockquote {
 
   .nav-button small {
     font-size: 16px;
+  }
+
+  .nav-button b {
+    font-size: 13px;
   }
 
   .middle-panel {
