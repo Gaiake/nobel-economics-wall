@@ -61,17 +61,14 @@ function renderNavigation() {
   return `
     <aside class="nav-panel" aria-label="大屏导航">
       <div class="nav-brand">
-        <p>浙江大学经济学院</p>
-        <h1>学科思政基地</h1>
-        <em>浙江大学学科思政育人示范基地</em>
-        <span>执善向上 · 经世济民</span>
+        <h1>浙江大学学科思政育人示范基地</h1>
       </div>
       <nav class="nav-actions">
         ${NAV_ITEMS.map(
           (item) => `
             <button class="nav-button ${item.id === shellState.activeModule ? "is-active" : ""}" data-module="${escapeHtml(item.id)}">
               <span>${escapeHtml(item.label)}</span>
-              <small>${escapeHtml(item.description)}</small>
+              ${item.description ? `<small>${escapeHtml(item.description)}</small>` : ""}
               ${item.support ? `<b>${escapeHtml(item.support)}</b>` : ""}
             </button>
           `,

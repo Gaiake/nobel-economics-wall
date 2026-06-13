@@ -475,7 +475,6 @@ blockquote::before {
   border-bottom: 1px solid rgba(246, 239, 223, 0.14);
 }
 
-.nav-brand p,
 .game-kicker {
   margin: 0;
   color: var(--gold);
@@ -483,34 +482,14 @@ blockquote::before {
   letter-spacing: 0;
 }
 
-.nav-brand p {
-  font-size: clamp(24px, 1.35vw, 38px);
-}
-
 .nav-brand h1 {
-  margin: 10px 0 0;
-  font-size: clamp(42px, 3.2vw, 86px);
-  line-height: 1.04;
+  margin: 0;
+  color: var(--cyan);
+  font-size: clamp(38px, 2.4vw, 64px);
+  line-height: 1.15;
   letter-spacing: 0;
-}
-
-.nav-brand span {
-  display: block;
-  margin-top: clamp(14px, 0.9vw, 24px);
-  color: rgba(246, 239, 223, 0.76);
-  font-size: clamp(20px, 1.12vw, 34px);
   font-weight: 900;
-  line-height: 1.2;
-}
-
-.nav-brand em {
-  display: block;
-  margin-top: clamp(10px, 0.7vw, 18px);
-  color: rgba(226, 246, 255, 0.78);
-  font-size: clamp(16px, 0.88vw, 25px);
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.35;
+  text-shadow: 0 0 18px rgba(41, 220, 255, 0.24);
 }
 
 .nav-actions {
@@ -981,9 +960,6 @@ blockquote::before {
   border-bottom-color: rgba(41, 220, 255, 0.22);
 }
 
-.nav-brand p,
-.nav-brand span,
-.nav-brand em,
 .game-kicker,
 .detail-year,
 .detail-panel h3,
@@ -1341,20 +1317,8 @@ blockquote {
     padding: 22px 16px;
   }
 
-  .nav-brand p {
-    font-size: 20px;
-  }
-
   .nav-brand h1 {
-    font-size: 42px;
-  }
-
-  .nav-brand span {
-    font-size: 18px;
-  }
-
-  .nav-brand em {
-    font-size: 14px;
+    font-size: 32px;
   }
 
   .nav-button {

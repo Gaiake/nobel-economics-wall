@@ -82,7 +82,9 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
-  assert.ok(app.includes("执善向上 · 经世济民"), "missing college motto text");
+  assert.ok(app.includes("浙江大学学科思政育人示范基地"), "missing base title text");
+  assert.equal(app.includes("浙江大学经济学院"), false, "old college label should be removed from nav brand");
+  assert.equal(app.includes("执善向上 · 经世济民"), false, "old motto should be removed from nav brand");
   assert.equal(app.includes("APP_DISPLAY"), false, "navigation should not show app dimensions");
   assert.equal(app.includes("market-news"), false, "market news should not be part of the app navigation");
   assert.ok(css.includes(".bookcase-module > .embed-stage"), "bookcase embed should fill the module");

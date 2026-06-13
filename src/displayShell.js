@@ -40,19 +40,19 @@ export const INVESTOR_GAMES = [
 export const NAV_ITEMS = [
   {
     id: "nobel",
-    label: "诺奖经济学家",
-    description: "诺贝尔经济学奖获得者",
+    label: "诺贝尔经济学奖获得者",
+    description: "",
   },
   {
     id: "investor-games",
-    label: "投教小游戏",
-    description: "科普互动游戏",
+    label: "科普互动游戏",
+    description: "",
     support: "支持单位：上海证券交易所、中国证券博物馆",
   },
   {
     id: "futures-books",
-    label: "电子书橱",
-    description: "科普电子书橱",
+    label: "科普电子书橱",
+    description: "",
     support: "支持单位：上海期货交易所",
   },
 ];
