@@ -548,7 +548,7 @@ blockquote::before {
   line-height: 1.08;
 }
 
-.nav-button[data-module="nobel"] {
+.nav-button {
   place-items: center;
   text-align: center;
 }
