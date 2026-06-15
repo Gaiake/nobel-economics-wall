@@ -84,7 +84,7 @@ test("investor education module exposes the three configured game links", () => 
     [
       ["期货玩家", "https://work.jingjia-tech.com/csm/game/zzb1.html", "compact"],
       ["红色证券史", "https://spa.museshow.cn/csm/game/finder/", "wide"],
-      ["中国证券博物馆", "https://spa.museshow.cn/csm/game/diary/", "wide"],
+      ["投资日记", "https://spa.museshow.cn/csm/game/diary/", "wide"],
     ],
   );
 });

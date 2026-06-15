@@ -31,8 +31,8 @@ export const INVESTOR_GAMES = [
     url: "https://spa.museshow.cn/csm/game/finder/",
   },
   {
-    title: "中国证券博物馆",
-    description: "通过数字展陈走近证券文化与金融历史。",
+    title: "投资日记",
+    description: "以趣味化的互动形式普及证券投资知识。",
     url: "https://spa.museshow.cn/csm/game/diary/",
   },
 ];
