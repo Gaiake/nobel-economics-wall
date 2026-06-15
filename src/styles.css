@@ -548,6 +548,11 @@ blockquote::before {
   line-height: 1.08;
 }
 
+.nav-button[data-module="nobel"] {
+  place-items: center;
+  text-align: center;
+}
+
 .nav-button small {
   color: rgba(246, 239, 223, 0.68);
   font-size: clamp(18px, 1vw, 28px);
