@@ -1042,7 +1042,7 @@ blockquote::before {
 }
 
 .embed-toolbar {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   gap: 22px;
@@ -1399,27 +1399,19 @@ blockquote {
     0 24px 58px rgba(0, 0, 0, 0.32);
 }
 
-.embed-stage.is-portrait-fill .embed-toolbar {
-  position: absolute;
-  top: clamp(12px, 0.8vw, 22px);
-  left: clamp(12px, 0.8vw, 22px);
-  z-index: 2;
-  width: auto;
-  min-width: 260px;
-  border: 1px solid rgba(140, 200, 223, 0.2);
-  background: rgba(4, 18, 40, 0.7);
-}
-
 .embed-stage.is-portrait-fill .embed-frame-wrap {
   height: 100%;
   place-items: center;
-  padding: clamp(8px, 0.6vw, 18px);
+  overflow: hidden;
+  padding: 0;
   background: rgba(2, 7, 13, 0.86);
 }
 
 .embed-stage.is-portrait-fill .embed-frame {
-  width: min(100%, 1700px);
-  height: min(100%, 1720px);
+  width: 820px;
+  height: 1460px;
+  transform: scale(1.18);
+  transform-origin: center center;
   border: 1px solid rgba(140, 200, 223, 0.28);
   background: #fff;
   box-shadow:

@@ -94,6 +94,8 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".embed-frame-wrap",
     "aspect-ratio: 9 / 16",
     "height: min(100%, 1720px)",
+    "width: 820px",
+    "transform: scale(1.18)",
     "width: auto",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
@@ -119,6 +121,7 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.equal(app.includes("market-header"), false, "market panel should not add a chrome header over the three-screen embed");
   assert.equal(app.includes("market-open-link"), false, "market panel should not overlay controls on the three-screen embed");
   assert.equal(app.includes("新窗口打开"), false, "embedded modules should not overlay a new-window button");
+  assert.ok(css.includes("display: none"), "embedded module toolbar should be hidden from the game canvas");
   assert.equal(css.includes(".market-frame-shell"), false, "market iframe should occupy the full three-screen region");
   assert.ok(css.includes(".bookcase-module > .embed-stage"), "bookcase embed should fill the module");
   assert.ok(css.includes("--cyan: #8cc8df"), "left panels should use the muted Tonghuashun-compatible cyan");
