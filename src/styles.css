@@ -1408,9 +1408,9 @@ blockquote {
 }
 
 .embed-stage.is-portrait-fill .embed-frame {
-  width: 820px;
-  height: 1460px;
-  transform: scale(1.18);
+  width: 430px;
+  height: 760px;
+  transform: scale(2.42);
   transform-origin: center center;
   border: 1px solid rgba(140, 200, 223, 0.28);
   background: #fff;

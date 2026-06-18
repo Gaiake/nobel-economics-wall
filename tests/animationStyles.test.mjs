@@ -94,8 +94,8 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".embed-frame-wrap",
     "aspect-ratio: 9 / 16",
     "height: min(100%, 1720px)",
-    "width: 820px",
-    "transform: scale(1.18)",
+    "width: 430px",
+    "transform: scale(2.42)",
     "width: auto",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
