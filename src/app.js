@@ -169,19 +169,21 @@ function renderNobelModule() {
           <h2>思想、理论与时代回应</h2>
         </div>
       </header>
-      <section class="nobel-detail-stage">
-        ${renderDetail()}
-      </section>
-      <section class="nobel-picker">
-        <footer class="nobel-footer">
-          <span>按年代筛选</span>
-          <nav class="decade-nav" aria-label="按年代筛选">
-            ${renderDecadeButtons()}
-          </nav>
-        </footer>
-        <div class="gallery-grid" aria-label="获奖者头像矩阵">
-          ${renderCards()}
-        </div>
+      <section class="nobel-two-screen">
+        <section class="nobel-picker">
+          <footer class="nobel-footer">
+            <span>按年代筛选</span>
+            <nav class="decade-nav" aria-label="按年代筛选">
+              ${renderDecadeButtons()}
+            </nav>
+          </footer>
+          <div class="gallery-grid" aria-label="获奖者头像矩阵">
+            ${renderCards()}
+          </div>
+        </section>
+        <section class="nobel-detail-stage">
+          ${renderDetail()}
+        </section>
       </section>
     </section>
   `;
