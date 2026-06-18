@@ -3,6 +3,7 @@ import {
   FUTURES_BOOKCASE_URL,
   INVESTOR_GAMES,
   NAV_ITEMS,
+  TONGHUASHUN_MARKET_URL,
   getInitialShellState,
   getNextShellState,
 } from "./displayShell.js";
@@ -262,6 +263,22 @@ function renderMiddleModule() {
   return renderNobelModule();
 }
 
+function renderMarketPanel() {
+  return `
+    <aside class="market-panel" aria-label="同花顺宏观经济大屏">
+      <iframe
+        class="market-frame"
+        src="${escapeHtml(TONGHUASHUN_MARKET_URL)}"
+        title="同花顺宏观经济大屏"
+        allow="fullscreen"
+      ></iframe>
+      <a class="market-open-link" href="${escapeHtml(TONGHUASHUN_MARKET_URL)}" target="_blank" rel="noopener">
+        新窗口打开同花顺
+      </a>
+    </aside>
+  `;
+}
+
 function render() {
   app.innerHTML = `
     <section class="screen-shell">
@@ -269,6 +286,7 @@ function render() {
       <main class="middle-panel">
         ${renderMiddleModule()}
       </main>
+      ${renderMarketPanel()}
     </section>
   `;
 }

@@ -59,12 +59,14 @@ test("person switching does not reanimate the whole card grid", () => {
   assert.equal(app.includes("animation-delay"), false);
 });
 
-test("shell styles reserve the left three-screen 1:2 app region", () => {
+test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   for (const token of [
     ".screen-shell",
-    "grid-template-columns: 1fr 2fr",
+    "grid-template-columns: 1fr 2fr 3fr",
     ".nav-panel",
     ".middle-panel",
+    ".market-panel",
+    ".market-frame",
     "overflow: hidden",
     ".interactive-module",
     "--cyan",
@@ -92,13 +94,14 @@ test("shell styles reserve the left three-screen 1:2 app region", () => {
   assert.equal(app.includes("执善向上 · 经世济民"), false, "old motto should be removed from nav brand");
   assert.equal(app.includes("APP_DISPLAY"), false, "navigation should not show app dimensions");
   assert.equal(app.includes("market-news"), false, "market news should not be part of the app navigation");
+  assert.ok(app.includes("TONGHUASHUN_MARKET_URL"), "right three screens should embed the Tonghuashun market panel");
   assert.ok(css.includes(".bookcase-module > .embed-stage"), "bookcase embed should fill the module");
 });
 
-test("single-display debug styles show only the left three panels", () => {
+test("single-display debug styles preserve the full six-panel wall preview", () => {
   for (const token of [
     "@media (max-width: 1200px)",
-    "grid-template-columns: 1fr 2fr",
+    "grid-template-columns: 1fr 2fr 3fr",
     ".screen-shell::after",
     "单屏调试",
   ]) {

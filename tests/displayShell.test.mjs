@@ -6,6 +6,7 @@ import {
   IDLE_RESET_MS,
   INVESTOR_GAMES,
   FUTURES_BOOKCASE_URL,
+  TONGHUASHUN_MARKET_URL,
   getDisplayRegions,
   getInitialShellState,
   getNextShellState,
@@ -91,4 +92,8 @@ test("investor education module exposes the three configured game links", () => 
 
 test("futures bookcase module uses the configured electronic bookcase link", () => {
   assert.equal(FUTURES_BOOKCASE_URL, "https://book.yunzhan365.com/bookcase/bgmtc/index.html?foldId=-1");
+});
+
+test("market panel uses the configured Tonghuashun large-screen link", () => {
+  assert.equal(TONGHUASHUN_MARKET_URL, "https://board.10jqka.com.cn/fe/largescreen/macroEconomy.html");
 });

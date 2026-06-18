@@ -17,6 +17,7 @@ export const APP_DISPLAY = {
 export const IDLE_RESET_MS = 5 * 60 * 1000;
 export const DEFAULT_MODULE = "nobel";
 export const FUTURES_BOOKCASE_URL = "https://book.yunzhan365.com/bookcase/bgmtc/index.html?foldId=-1";
+export const TONGHUASHUN_MARKET_URL = "https://board.10jqka.com.cn/fe/largescreen/macroEconomy.html";
 
 export const INVESTOR_GAMES = [
   {
