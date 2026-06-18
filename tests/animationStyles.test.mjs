@@ -119,6 +119,10 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.equal(app.includes("market-open-link"), false, "market panel should not overlay controls on the three-screen embed");
   assert.equal(css.includes(".market-frame-shell"), false, "market iframe should occupy the full three-screen region");
   assert.ok(css.includes(".bookcase-module > .embed-stage"), "bookcase embed should fill the module");
+  assert.ok(css.includes("--cyan: #8cc8df"), "left panels should use the muted Tonghuashun-compatible cyan");
+  assert.ok(css.includes("linear-gradient(135deg, #020407 0%, #06101a 48%, #020509 100%)"), "left wall background should use a black-blue finance palette");
+  assert.equal(css.includes("#29dcff"), false, "old saturated cyan should not return");
+  assert.equal(css.includes("#0a2d63"), false, "old bright blue wall background should not return");
 });
 
 test("single-display debug styles preserve the full six-panel wall preview", () => {

@@ -11,11 +11,11 @@
   --green: #203833;
   --blue: #536f86;
   --brick: #9b5d4b;
-  --cyan: #29dcff;
-  --cyan-soft: rgba(41, 220, 255, 0.28);
-  --electric-blue: #437dff;
-  --screen-blue: #0a2d63;
-  --glass: rgba(18, 54, 100, 0.46);
+  --cyan: #8cc8df;
+  --cyan-soft: rgba(140, 200, 223, 0.22);
+  --electric-blue: #315d86;
+  --screen-blue: #071522;
+  --glass: rgba(9, 22, 34, 0.68);
   --title-font: "YouSheBiaoTiHei", "PangMenZhengDao", "Alibaba PuHuiTi", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
   --line-soft: rgba(210, 168, 77, 0.08);
   --museum-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
@@ -32,11 +32,11 @@ body {
   min-width: 6480px;
   min-height: 1920px;
   background:
-    linear-gradient(90deg, rgba(41, 220, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(41, 220, 255, 0.045) 1px, transparent 1px),
-    radial-gradient(circle at 18% 12%, rgba(41, 220, 255, 0.26), transparent 26%),
-    radial-gradient(circle at 74% 18%, rgba(67, 125, 255, 0.24), transparent 30%),
-    linear-gradient(135deg, #061126 0%, #0a2d63 48%, #071126 100%);
+    linear-gradient(90deg, rgba(140, 200, 223, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(140, 200, 223, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, rgba(56, 101, 128, 0.18), transparent 28%),
+    radial-gradient(circle at 74% 18%, rgba(71, 109, 133, 0.14), transparent 32%),
+    linear-gradient(135deg, #020407 0%, #06101a 48%, #020509 100%);
   background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%, auto;
   color: var(--panel);
   animation: background-drift 28s linear infinite;
@@ -53,13 +53,13 @@ body::before {
       115deg,
       transparent 0%,
       transparent 42%,
-      rgba(210, 168, 77, 0.08) 49%,
-      rgba(246, 239, 223, 0.055) 52%,
+      rgba(140, 200, 223, 0.045) 49%,
+      rgba(226, 246, 255, 0.032) 52%,
       transparent 60%,
       transparent 100%
     );
   mix-blend-mode: screen;
-  opacity: 0.72;
+  opacity: 0.48;
   transform: translateX(-38%);
   animation: ambient-sweep 22s ease-in-out infinite;
 }
@@ -71,8 +71,8 @@ body::after {
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(210, 168, 77, 0.055), transparent 22%, transparent 78%, rgba(83, 111, 134, 0.06)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 18%, transparent 72%, rgba(0, 0, 0, 0.22));
+    linear-gradient(90deg, rgba(140, 200, 223, 0.045), transparent 22%, transparent 78%, rgba(83, 111, 134, 0.045)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 18%, transparent 72%, rgba(0, 0, 0, 0.42));
 }
 
 button {
@@ -98,11 +98,11 @@ button {
   content: "";
   inset: 0;
   background-image:
-    radial-gradient(circle, rgba(210, 168, 77, 0.18) 0 1.4px, transparent 1.8px),
-    radial-gradient(circle, rgba(116, 145, 151, 0.13) 0 1.2px, transparent 1.7px);
+    radial-gradient(circle, rgba(226, 246, 255, 0.18) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle, rgba(116, 145, 151, 0.11) 0 1.1px, transparent 1.6px);
   background-position: 0 0, 46px 38px;
   background-size: 138px 138px, 184px 184px;
-  opacity: 0.38;
+  opacity: 0.24;
   animation: particle-float 34s ease-in-out infinite alternate;
 }
 
@@ -111,13 +111,13 @@ button {
   left: 6vw;
   right: 6vw;
   bottom: 8vh;
-  color: rgba(246, 239, 223, 0.048);
+  color: rgba(226, 246, 255, 0.035);
   font-size: clamp(36px, 4vw, 86px);
   font-weight: 900;
   letter-spacing: 0;
   white-space: nowrap;
   text-align: center;
-  text-shadow: 0 0 28px rgba(210, 168, 77, 0.07);
+  text-shadow: 0 0 28px rgba(140, 200, 223, 0.06);
   animation: keyword-float 42s ease-in-out infinite alternate;
 }
 
@@ -495,7 +495,7 @@ blockquote::before {
   line-height: 1.15;
   letter-spacing: 0;
   font-weight: 900;
-  text-shadow: 0 0 18px rgba(41, 220, 255, 0.24);
+  text-shadow: 0 0 18px rgba(140, 200, 223, 0.18);
 }
 
 .nav-brand h1 span {
@@ -511,10 +511,10 @@ blockquote::before {
   line-height: 1.62;
   text-align: justify;
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.08), transparent 48%),
-    rgba(16, 50, 91, 0.32);
-  border: 1px solid rgba(41, 220, 255, 0.2);
-  box-shadow: inset 0 0 0 1px rgba(41, 220, 255, 0.06);
+    linear-gradient(135deg, rgba(140, 200, 223, 0.045), transparent 48%),
+    rgba(7, 20, 32, 0.54);
+  border: 1px solid rgba(140, 200, 223, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(140, 200, 223, 0.045);
 }
 
 .nav-actions {
@@ -599,7 +599,7 @@ blockquote::before {
 .market-panel {
   display: block;
   background: #020711;
-  border-left: 1px solid rgba(41, 220, 255, 0.22);
+  border-left: 1px solid rgba(140, 200, 223, 0.18);
   overflow: hidden;
 }
 
@@ -637,7 +637,7 @@ blockquote::before {
 
 .nobel-picker {
   padding-right: clamp(18px, 1.1vw, 32px);
-  border-right: 1px solid rgba(41, 220, 255, 0.28);
+  border-right: 1px solid rgba(140, 200, 223, 0.2);
 }
 
 .nobel-detail-stage {
@@ -760,7 +760,7 @@ blockquote::before {
   padding: 0 0 28px;
   text-align: left;
   border-right: 0;
-  border-bottom: 1px solid rgba(41, 220, 255, 0.22);
+  border-bottom: 1px solid rgba(140, 200, 223, 0.18);
 }
 
 .nobel-detail-stage .portrait-large {
@@ -781,8 +781,8 @@ blockquote::before {
 .nobel-detail-stage .detail-panel section {
   min-width: 0;
   padding: 28px 30px;
-  background: rgba(41, 220, 255, 0.055);
-  border: 1px solid rgba(41, 220, 255, 0.14);
+  background: rgba(140, 200, 223, 0.045);
+  border: 1px solid rgba(140, 200, 223, 0.105);
 }
 
 .nobel-detail-stage .detail-panel section:last-child {
@@ -806,7 +806,7 @@ blockquote::before {
   overflow-y: auto;
   padding: 4px 8px 0 0;
   scrollbar-width: thin;
-  scrollbar-color: rgba(41, 220, 255, 0.55) rgba(246, 239, 223, 0.08);
+  scrollbar-color: rgba(140, 200, 223, 0.42) rgba(246, 239, 223, 0.08);
 }
 
 .nobel-picker .laureate-card {
@@ -1123,12 +1123,12 @@ blockquote::before {
 .nav-panel {
   border-right: 1px solid var(--cyan-soft);
   background:
-    radial-gradient(circle at 24% 12%, rgba(41, 220, 255, 0.16), transparent 28%),
-    linear-gradient(180deg, rgba(8, 30, 64, 0.92), rgba(4, 15, 34, 0.86));
+    radial-gradient(circle at 24% 12%, rgba(140, 200, 223, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(5, 16, 27, 0.96), rgba(2, 7, 13, 0.92));
 }
 
 .nav-brand {
-  border-bottom-color: rgba(41, 220, 255, 0.22);
+  border-bottom-color: rgba(140, 200, 223, 0.18);
 }
 
 .game-kicker,
@@ -1139,7 +1139,7 @@ blockquote::before {
 .interactive-card span,
 .embed-toolbar span {
   color: var(--cyan);
-  text-shadow: 0 0 18px rgba(41, 220, 255, 0.24);
+  text-shadow: 0 0 16px rgba(140, 200, 223, 0.18);
 }
 
 .nav-button,
@@ -1148,11 +1148,11 @@ blockquote::before {
 .interactive-card {
   border: 1px solid var(--cyan-soft);
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.1), transparent 48%),
-    rgba(16, 50, 91, 0.54);
+    linear-gradient(135deg, rgba(140, 200, 223, 0.055), transparent 48%),
+    rgba(7, 20, 32, 0.7);
   box-shadow:
-    inset 0 0 0 1px rgba(41, 220, 255, 0.08),
-    0 0 22px rgba(41, 220, 255, 0.08);
+    inset 0 0 0 1px rgba(140, 200, 223, 0.055),
+    0 0 22px rgba(140, 200, 223, 0.045);
 }
 
 .nav-button.is-active,
@@ -1168,12 +1168,12 @@ blockquote::before {
 .interactive-card.is-active {
   color: #ecfbff;
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.28), rgba(67, 125, 255, 0.18)),
-    rgba(22, 77, 132, 0.78);
-  border-color: rgba(41, 220, 255, 0.78);
+    linear-gradient(135deg, rgba(140, 200, 223, 0.13), rgba(49, 93, 134, 0.1)),
+    rgba(9, 29, 45, 0.88);
+  border-color: rgba(140, 200, 223, 0.58);
   box-shadow:
-    inset 0 0 0 1px rgba(41, 220, 255, 0.28),
-    0 0 34px rgba(41, 220, 255, 0.18);
+    inset 0 0 0 1px rgba(140, 200, 223, 0.16),
+    0 0 30px rgba(140, 200, 223, 0.11);
 }
 
 .nav-button.is-active small,
@@ -1184,13 +1184,13 @@ blockquote::before {
 
 .middle-panel {
   border-right: 0;
-  background: rgba(3, 16, 34, 0.28);
+  background: rgba(2, 7, 13, 0.38);
 }
 
 .wall-header,
 .interactive-header,
 .nobel-footer {
-  border-color: rgba(41, 220, 255, 0.28);
+  border-color: rgba(140, 200, 223, 0.2);
 }
 
 .middle-panel .wall-header {
@@ -1213,7 +1213,7 @@ blockquote::before {
   gap: clamp(16px, 1vw, 28px);
   margin-top: clamp(14px, 0.9vw, 22px);
   padding-top: clamp(14px, 0.9vw, 22px);
-  border-top: 1px solid rgba(41, 220, 255, 0.28);
+  border-top: 1px solid rgba(140, 200, 223, 0.2);
 }
 
 .nobel-footer span {
@@ -1240,11 +1240,11 @@ blockquote::before {
 .market-focus-module {
   color: #f2fbff;
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.1), transparent 46%),
+    linear-gradient(135deg, rgba(140, 200, 223, 0.065), transparent 46%),
     var(--glass);
   border: 1px solid var(--cyan-soft);
   box-shadow:
-    inset 0 0 0 1px rgba(41, 220, 255, 0.08),
+    inset 0 0 0 1px rgba(140, 200, 223, 0.055),
     0 18px 42px rgba(0, 0, 0, 0.18);
 }
 
@@ -1255,18 +1255,18 @@ blockquote::before {
 .laureate-card::before,
 .detail-panel::before {
   background:
-    linear-gradient(90deg, rgba(41, 220, 255, 0.12), transparent 18%, transparent 82%, rgba(41, 220, 255, 0.08)),
+    linear-gradient(90deg, rgba(140, 200, 223, 0.085), transparent 18%, transparent 82%, rgba(140, 200, 223, 0.045)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%);
 }
 
 .laureate-card.is-active {
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.2), rgba(67, 125, 255, 0.12)),
-    rgba(16, 50, 91, 0.74);
-  border-color: rgba(41, 220, 255, 0.74);
+    linear-gradient(135deg, rgba(140, 200, 223, 0.14), rgba(49, 93, 134, 0.1)),
+    rgba(9, 29, 45, 0.88);
+  border-color: rgba(140, 200, 223, 0.58);
   box-shadow:
-    inset 0 0 0 1px rgba(41, 220, 255, 0.28),
-    0 0 30px rgba(41, 220, 255, 0.16);
+    inset 0 0 0 1px rgba(140, 200, 223, 0.16),
+    0 0 28px rgba(140, 200, 223, 0.11);
 }
 
 .card-meta,
@@ -1284,8 +1284,8 @@ blockquote::before {
 }
 
 blockquote {
-  background: rgba(41, 220, 255, 0.08);
-  border-left-color: rgba(41, 220, 255, 0.82);
+  background: rgba(140, 200, 223, 0.055);
+  border-left-color: rgba(140, 200, 223, 0.68);
 }
 
 .interactive-layout {
@@ -1334,9 +1334,9 @@ blockquote {
   grid-template-rows: auto 1fr auto;
   gap: clamp(20px, 1.3vw, 34px);
   padding: clamp(28px, 2vw, 56px);
-  border-right: 1px solid rgba(41, 220, 255, 0.34);
+  border-right: 1px solid rgba(140, 200, 223, 0.24);
   background:
-    radial-gradient(circle at 22% 18%, rgba(41, 220, 255, 0.14), transparent 34%),
+    radial-gradient(circle at 22% 18%, rgba(140, 200, 223, 0.105), transparent 34%),
     rgba(4, 18, 40, 0.48);
 }
 
@@ -1359,7 +1359,7 @@ blockquote {
 }
 
 .embed-toolbar {
-  border-bottom-color: rgba(41, 220, 255, 0.2);
+  border-bottom-color: rgba(140, 200, 223, 0.16);
   background: rgba(4, 18, 40, 0.72);
 }
 
@@ -1373,7 +1373,7 @@ blockquote {
   place-items: center;
   padding: clamp(10px, 0.8vw, 22px);
   background:
-    radial-gradient(circle at 50% 34%, rgba(41, 220, 255, 0.16), transparent 42%),
+    radial-gradient(circle at 50% 34%, rgba(140, 200, 223, 0.09), transparent 42%),
     rgba(3, 16, 34, 0.42);
 }
 
@@ -1384,7 +1384,7 @@ blockquote {
   z-index: 2;
   width: auto;
   max-width: min(460px, calc(100% - 32px));
-  border: 1px solid rgba(41, 220, 255, 0.28);
+  border: 1px solid rgba(140, 200, 223, 0.2);
   background: rgba(4, 18, 40, 0.72);
 }
 
@@ -1393,9 +1393,9 @@ blockquote {
   height: min(100%, 1720px);
   aspect-ratio: 9 / 16;
   max-width: 100%;
-  border: 1px solid rgba(41, 220, 255, 0.42);
+  border: 1px solid rgba(140, 200, 223, 0.28);
   box-shadow:
-    0 0 0 1px rgba(41, 220, 255, 0.16),
+    0 0 0 1px rgba(140, 200, 223, 0.09),
     0 24px 58px rgba(0, 0, 0, 0.32);
 }
 
@@ -1404,8 +1404,8 @@ blockquote {
   gap: 34px;
   padding: 72px 64px 64px;
   background:
-    radial-gradient(circle at 20% 10%, rgba(41, 220, 255, 0.18), transparent 28%),
-    linear-gradient(180deg, rgba(8, 30, 64, 0.96), rgba(3, 13, 30, 0.94));
+    radial-gradient(circle at 20% 10%, rgba(140, 200, 223, 0.11), transparent 28%),
+    linear-gradient(180deg, rgba(4, 13, 22, 0.98), rgba(3, 13, 30, 0.94));
 }
 
 .nav-brand {
@@ -1420,7 +1420,7 @@ blockquote {
 
 .nav-brand h1 span:first-child {
   font-size: 48px;
-  color: rgba(41, 220, 255, 0.92);
+  color: rgba(214, 233, 241, 0.92);
 }
 
 .nav-intro {
@@ -1428,10 +1428,10 @@ blockquote {
   font-size: 23px;
   line-height: 1.72;
   color: rgba(226, 246, 255, 0.82);
-  border-color: rgba(41, 220, 255, 0.26);
+  border-color: rgba(140, 200, 223, 0.18);
   background:
-    linear-gradient(135deg, rgba(41, 220, 255, 0.1), transparent 46%),
-    rgba(9, 34, 72, 0.48);
+    linear-gradient(135deg, rgba(140, 200, 223, 0.055), transparent 46%),
+    rgba(7, 20, 32, 0.62);
 }
 
 .nav-actions {
@@ -1449,8 +1449,8 @@ blockquote {
   text-align: left;
   overflow: hidden;
   background:
-    linear-gradient(120deg, rgba(41, 220, 255, 0.16), transparent 45%),
-    rgba(7, 31, 68, 0.72);
+    linear-gradient(120deg, rgba(140, 200, 223, 0.09), transparent 45%),
+    rgba(5, 17, 28, 0.82);
 }
 
 .nav-button::before {
@@ -1458,7 +1458,7 @@ blockquote {
   position: absolute;
   left: 34px;
   top: 26px;
-  color: rgba(41, 220, 255, 0.28);
+  color: rgba(140, 200, 223, 0.2);
   font-size: 38px;
   font-weight: 900;
   line-height: 1;
@@ -1471,7 +1471,7 @@ blockquote {
   right: 34px;
   bottom: 28px;
   height: 2px;
-  background: linear-gradient(90deg, rgba(41, 220, 255, 0.78), transparent);
+  background: linear-gradient(90deg, rgba(140, 200, 223, 0.58), transparent);
   transform: scaleX(0.34);
   transform-origin: left;
   transition: transform 180ms ease;
@@ -1494,8 +1494,8 @@ blockquote {
 .nav-button:focus-visible {
   color: #f2fbff;
   background:
-    linear-gradient(120deg, rgba(41, 220, 255, 0.28), rgba(67, 125, 255, 0.12)),
-    rgba(9, 47, 96, 0.86);
+    linear-gradient(120deg, rgba(140, 200, 223, 0.2), rgba(49, 93, 134, 0.08)),
+    rgba(8, 27, 42, 0.9);
 }
 
 .nav-button.is-active::after,
@@ -1507,8 +1507,8 @@ blockquote {
 .interactive-rail {
   padding: 72px 64px 64px;
   background:
-    radial-gradient(circle at 18% 12%, rgba(41, 220, 255, 0.16), transparent 30%),
-    rgba(4, 18, 40, 0.56);
+    radial-gradient(circle at 18% 12%, rgba(140, 200, 223, 0.09), transparent 30%),
+    rgba(4, 13, 22, 0.72);
 }
 
 .interactive-rail .interactive-header {
@@ -1543,7 +1543,7 @@ blockquote {
   position: absolute;
   right: 34px;
   top: 28px;
-  color: rgba(41, 220, 255, 0.24);
+  color: rgba(140, 200, 223, 0.18);
   font-size: 42px;
   font-weight: 900;
   line-height: 1;
