@@ -208,8 +208,8 @@ function renderInvestorGamesModule() {
       <aside class="interactive-rail">
         <header class="interactive-header">
           <div>
-            <p>模块一</p>
-            <h2>上交所投教小游戏</h2>
+            <h2>科普互动游戏</h2>
+            <p class="interactive-support">支持单位：上海证券交易所、中国证券博物馆</p>
           </div>
         </header>
         <div class="interactive-actions" aria-label="投教小游戏列表">
@@ -247,8 +247,8 @@ function renderBookcaseModule() {
     <section class="middle-module interactive-module bookcase-module">
       <header class="interactive-header">
         <div>
-          <p>模块三</p>
-          <h2>上海期货交易所电子书橱</h2>
+          <h2>科普电子书橱</h2>
+          <p class="interactive-support">支持单位：上海期货交易所</p>
         </div>
         <button class="return-button" data-module="${DEFAULT_MODULE}">返回诺奖展示</button>
       </header>

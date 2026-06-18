@@ -92,7 +92,15 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.ok(app.includes('<span>浙江大学</span>'), "base title should put Zhejiang University on its own line");
   assert.ok(app.includes('<span>学科思政育人示范基地</span>'), "base title should put base name on its own line");
   assert.ok(app.includes("打造沉浸式经济学科普阵地"), "nav intro should include the base introduction");
+  assert.ok(app.includes("<h2>科普互动游戏</h2>"), "game module should use the navigation display title");
+  assert.ok(app.includes("支持单位：上海证券交易所、中国证券博物馆"), "game module should show support units");
+  assert.ok(app.includes("<h2>科普电子书橱</h2>"), "bookcase module should use the navigation display title");
+  assert.ok(app.includes("支持单位：上海期货交易所"), "bookcase module should show support unit");
+  assert.equal(app.includes("模块一"), false, "game module should not show internal module numbering");
+  assert.equal(app.includes("模块三"), false, "bookcase module should not show internal module numbering");
+  assert.equal(app.includes("上交所投教小游戏"), false, "old game module title should be removed");
   assert.ok(css.includes("font-family: var(--title-font)"), "nav title should use the display title font stack");
+  assert.ok(css.includes(".interactive-header .interactive-support"), "support unit line should have explicit styling");
   assert.equal(app.includes("浙江大学经济学院"), false, "old college label should be removed from nav brand");
   assert.equal(app.includes("执善向上 · 经世济民"), false, "old motto should be removed from nav brand");
   assert.equal(app.includes("APP_DISPLAY"), false, "navigation should not show app dimensions");
