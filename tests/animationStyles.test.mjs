@@ -64,6 +64,7 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".screen-shell",
     "grid-template-columns: 1fr 2fr 3fr",
     "width: max(100vw, 6480px)",
+    "height: 1920px",
     ".nav-panel",
     ".middle-panel",
     ".market-panel",
@@ -73,6 +74,7 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     "--cyan",
     "--title-font",
     ".nav-intro",
+    "grid-template-rows: repeat(3, minmax(0, 1fr))",
     ".nobel-footer",
     ".interactive-actions",
     ".game-screen-split",
@@ -114,6 +116,7 @@ test("single-display debug styles preserve the full six-panel wall preview", () 
   for (const token of [
     "@media (max-width: 1200px)",
     "width: 6480px",
+    "height: 1920px",
     ".screen-shell::after",
     "单屏调试：横向滚动查看六屏",
   ]) {

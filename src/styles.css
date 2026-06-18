@@ -29,7 +29,8 @@
 body {
   margin: 0;
   overflow: auto;
-  min-height: 100vh;
+  min-width: 6480px;
+  min-height: 1920px;
   background:
     linear-gradient(90deg, rgba(41, 220, 255, 0.07) 1px, transparent 1px),
     linear-gradient(0deg, rgba(41, 220, 255, 0.045) 1px, transparent 1px),
@@ -437,8 +438,8 @@ blockquote::before {
 
 .app-shell {
   width: max(100vw, 6480px);
-  height: 100vh;
-  min-height: 100vh;
+  height: 1920px;
+  min-height: 1920px;
   padding: 0;
 }
 
@@ -448,7 +449,7 @@ blockquote::before {
   display: grid;
   grid-template-columns: 1fr 2fr 3fr;
   width: max(100vw, 6480px);
-  height: 100vh;
+  height: 1920px;
   overflow: hidden;
 }
 
@@ -458,7 +459,7 @@ blockquote::before {
   position: relative;
   min-width: 0;
   min-height: 0;
-  height: 100vh;
+  height: 1920px;
 }
 
 .nav-panel {
@@ -518,6 +519,8 @@ blockquote::before {
 
 .nav-actions {
   display: grid;
+  flex: 1 1 auto;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: clamp(14px, 1vw, 24px);
 }
 
@@ -538,7 +541,7 @@ blockquote::before {
   display: grid;
   gap: 8px;
   width: 100%;
-  min-height: clamp(108px, 6.2vw, 158px);
+  min-height: 0;
   padding: clamp(18px, 1.5vw, 34px);
   text-align: left;
 }
@@ -1348,6 +1351,7 @@ blockquote {
   .app-shell,
   .screen-shell {
     width: 6480px;
+    height: 1920px;
   }
 
   .screen-shell::after {
