@@ -30,11 +30,13 @@ export const INVESTOR_GAMES = [
     title: "红色证券史",
     description: "在互动探索中了解中国证券市场的发展脉络。",
     url: "https://spa.museshow.cn/csm/game/finder/",
+    frameMode: "compact",
   },
   {
     title: "投资日记",
     description: "以趣味化的互动形式普及证券投资知识。",
     url: "https://spa.museshow.cn/csm/game/diary/",
+    frameMode: "compact",
   },
 ];
 
