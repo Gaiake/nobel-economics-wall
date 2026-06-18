@@ -67,8 +67,6 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".nav-panel",
     ".middle-panel",
     ".market-panel",
-    ".market-header",
-    ".market-frame-shell",
     ".market-frame",
     "overflow: hidden",
     ".interactive-module",
@@ -106,6 +104,9 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.equal(app.includes("APP_DISPLAY"), false, "navigation should not show app dimensions");
   assert.equal(app.includes("market-news"), false, "market news should not be part of the app navigation");
   assert.ok(app.includes("TONGHUASHUN_MARKET_URL"), "right three screens should embed the Tonghuashun market panel");
+  assert.equal(app.includes("market-header"), false, "market panel should not add a chrome header over the three-screen embed");
+  assert.equal(app.includes("market-open-link"), false, "market panel should not overlay controls on the three-screen embed");
+  assert.equal(css.includes(".market-frame-shell"), false, "market iframe should occupy the full three-screen region");
   assert.ok(css.includes(".bookcase-module > .embed-stage"), "bookcase embed should fill the module");
 });
 
