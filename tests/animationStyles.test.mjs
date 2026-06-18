@@ -67,6 +67,8 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".nav-panel",
     ".middle-panel",
     ".market-panel",
+    ".market-header",
+    ".market-frame-shell",
     ".market-frame",
     "overflow: hidden",
     ".interactive-module",

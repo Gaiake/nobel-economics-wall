@@ -266,15 +266,23 @@ function renderMiddleModule() {
 function renderMarketPanel() {
   return `
     <aside class="market-panel" aria-label="同花顺宏观经济大屏">
-      <iframe
-        class="market-frame"
-        src="${escapeHtml(TONGHUASHUN_MARKET_URL)}"
-        title="同花顺宏观经济大屏"
-        allow="fullscreen"
-      ></iframe>
-      <a class="market-open-link" href="${escapeHtml(TONGHUASHUN_MARKET_URL)}" target="_blank" rel="noopener">
-        新窗口打开同花顺
-      </a>
+      <header class="market-header">
+        <div>
+          <p>实时行情与宏观数据</p>
+          <h2>同花顺宏观经济大屏</h2>
+        </div>
+        <a class="market-open-link" href="${escapeHtml(TONGHUASHUN_MARKET_URL)}" target="_blank" rel="noopener">
+          新窗口打开
+        </a>
+      </header>
+      <div class="market-frame-shell">
+        <iframe
+          class="market-frame"
+          src="${escapeHtml(TONGHUASHUN_MARKET_URL)}"
+          title="同花顺宏观经济大屏"
+          allow="fullscreen"
+        ></iframe>
+      </div>
     </aside>
   `;
 }
