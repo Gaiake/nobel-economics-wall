@@ -84,8 +84,8 @@ test("investor education module exposes the three configured game links", () => 
     INVESTOR_GAMES.map((item) => [item.title, item.url, item.frameMode ?? "wide"]),
     [
       ["期货玩家", "https://work.jingjia-tech.com/csm/game/zzb1.html", "compact"],
-      ["红色证券史", "https://spa.museshow.cn/csm/game/finder/", "compact"],
-      ["投资日记", "https://spa.museshow.cn/csm/game/diary/", "compact"],
+      ["红色证券史", "https://spa.museshow.cn/csm/game/finder/", "portrait-fill"],
+      ["投资日记", "https://spa.museshow.cn/csm/game/diary/", "portrait-fill"],
     ],
   );
 });

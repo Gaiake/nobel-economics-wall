@@ -197,7 +197,6 @@ function renderEmbedFrame(title, url, frameMode = "wide") {
           <span>正在展示</span>
           <strong>${escapeHtml(title)}</strong>
         </div>
-        <a href="${escapeHtml(url)}" target="_blank" rel="noopener">新窗口打开</a>
       </div>
       <div class="embed-frame-wrap">
         <iframe class="embed-frame" src="${escapeHtml(url)}" title="${escapeHtml(title)}"></iframe>
