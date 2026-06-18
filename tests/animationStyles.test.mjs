@@ -63,6 +63,7 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   for (const token of [
     ".screen-shell",
     "grid-template-columns: 1fr 2fr 3fr",
+    "width: max(100vw, 6480px)",
     ".nav-panel",
     ".middle-panel",
     ".market-panel",
@@ -101,9 +102,9 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
 test("single-display debug styles preserve the full six-panel wall preview", () => {
   for (const token of [
     "@media (max-width: 1200px)",
-    "grid-template-columns: 1fr 2fr 3fr",
+    "width: 6480px",
     ".screen-shell::after",
-    "单屏调试",
+    "单屏调试：横向滚动查看六屏",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
