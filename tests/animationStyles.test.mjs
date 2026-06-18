@@ -76,6 +76,10 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
     ".nav-intro",
     "grid-template-rows: repeat(3, minmax(0, 1fr))",
     ".nobel-footer",
+    ".nobel-detail-stage",
+    ".nobel-picker",
+    "grid-template-columns: repeat(6, minmax(0, 1fr))",
+    "aspect-ratio: 1 / 0.92",
     ".interactive-actions",
     ".game-screen-split",
     "grid-template-columns: 1fr 1fr",
@@ -95,6 +99,7 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.ok(app.includes("<h2>科普互动游戏</h2>"), "game module should use the navigation display title");
   assert.ok(app.includes("支持单位：上海证券交易所、中国证券博物馆"), "game module should show support units");
   assert.ok(app.includes("<h2>科普电子书橱</h2>"), "bookcase module should use the navigation display title");
+  assert.ok(app.indexOf("nobel-detail-stage") < app.indexOf("nobel-picker"), "Nobel detail should render above the selectable card wall");
   assert.ok(app.includes("支持单位：上海期货交易所"), "bookcase module should show support unit");
   assert.equal(app.includes("模块一"), false, "game module should not show internal module numbering");
   assert.equal(app.includes("模块三"), false, "bookcase module should not show internal module numbering");
