@@ -135,9 +135,9 @@ test("single-display debug styles preserve the full six-panel wall preview", () 
     "@media (max-width: 1200px)",
     "width: 6480px",
     "height: 1920px",
-    ".screen-shell::after",
-    "单屏调试：横向滚动查看六屏",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
+  assert.equal(css.includes("单屏调试"), false, "single-display helper text should not be visible");
+  assert.equal(css.includes(".screen-shell::after"), false, "single-display helper badge should be removed");
 });

@@ -1649,20 +1649,6 @@ blockquote {
     width: 6480px;
     height: 1920px;
   }
-
-  .screen-shell::after {
-    content: "单屏调试：横向滚动查看六屏";
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 10;
-    padding: 8px 12px;
-    color: rgba(246, 239, 223, 0.72);
-    background: rgba(16, 25, 24, 0.72);
-    border: 1px solid rgba(246, 239, 223, 0.12);
-    font-size: 13px;
-    pointer-events: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
