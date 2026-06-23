@@ -39,7 +39,6 @@ body {
     linear-gradient(135deg, #020407 0%, #06101a 48%, #020509 100%);
   background-size: 96px 96px, 96px 96px, 100% 100%, 100% 100%, auto;
   color: var(--panel);
-  animation: background-drift 28s linear infinite;
 }
 
 body::before {
@@ -61,7 +60,6 @@ body::before {
   mix-blend-mode: screen;
   opacity: 0.48;
   transform: translateX(-38%);
-  animation: ambient-sweep 22s ease-in-out infinite;
 }
 
 body::after {
@@ -103,7 +101,6 @@ button {
   background-position: 0 0, 46px 38px;
   background-size: 138px 138px, 184px 184px;
   opacity: 0.24;
-  animation: particle-float 34s ease-in-out infinite alternate;
 }
 
 .app-shell::after {
@@ -118,7 +115,6 @@ button {
   white-space: nowrap;
   text-align: center;
   text-shadow: 0 0 28px rgba(140, 200, 223, 0.06);
-  animation: keyword-float 42s ease-in-out infinite alternate;
 }
 
 .loading-state,
@@ -1585,52 +1581,6 @@ blockquote {
 
   to {
     opacity: 1;
-  }
-}
-
-@keyframes background-drift {
-  from {
-    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
-  }
-
-  to {
-    background-position: 96px 48px, -48px 96px, 0 0, 0 0, 0 0;
-  }
-}
-
-@keyframes ambient-sweep {
-  0%,
-  18% {
-    transform: translateX(-42%);
-  }
-
-  58%,
-  100% {
-    transform: translateX(42%);
-  }
-}
-
-@keyframes particle-float {
-  from {
-    background-position: 0 0, 46px 38px;
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    background-position: 42px -64px, -28px 78px;
-    transform: translate3d(0, -18px, 0);
-  }
-}
-
-@keyframes keyword-float {
-  from {
-    opacity: 0.58;
-    transform: translate3d(-3vw, 0, 0);
-  }
-
-  to {
-    opacity: 0.82;
-    transform: translate3d(3vw, -18px, 0);
   }
 }
 

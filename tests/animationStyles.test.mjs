@@ -8,26 +8,34 @@ const app = await readFile(new URL("../src/app.js", import.meta.url), "utf8");
 test("motion styles define restrained gallery and detail animations", () => {
   for (const token of [
     "@keyframes detail-reveal",
-    "@keyframes background-drift",
-    "@keyframes ambient-sweep",
     "@media (prefers-reduced-motion: reduce)",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
   }
 });
 
-test("ambient motion lives in the empty background layer", () => {
-  assert.ok(css.includes("body::before"), "background sweep should be a body pseudo-element");
-  assert.ok(css.includes("pointer-events: none"), "background sweep should not intercept touches");
-  assert.ok(css.includes("mix-blend-mode: screen"), "background sweep should stay luminous and subtle");
+test("ambient background is static and non-interactive", () => {
+  assert.ok(css.includes("body::before"), "ambient layer should remain a body pseudo-element");
+  assert.ok(css.includes("pointer-events: none"), "ambient layer should not intercept touches");
+  assert.ok(css.includes("mix-blend-mode: screen"), "ambient layer should stay luminous and subtle");
+  for (const token of [
+    "@keyframes background-drift",
+    "@keyframes ambient-sweep",
+    "@keyframes particle-float",
+    "@keyframes keyword-float",
+    "animation: background-drift",
+    "animation: ambient-sweep",
+    "animation: particle-float",
+    "animation: keyword-float",
+  ]) {
+    assert.equal(css.includes(token), false, `${token} should be removed`);
+  }
 });
 
-test("background has floating particles and keyword texture layers", () => {
+test("background has static particles and keyword texture layers", () => {
   for (const token of [
     ".app-shell::before",
     ".app-shell::after",
-    "@keyframes particle-float",
-    "@keyframes keyword-float",
     "增长 · 制度 · 市场 · 福利 · 计量 · 创新",
   ]) {
     assert.ok(css.includes(token), `missing ${token}`);
