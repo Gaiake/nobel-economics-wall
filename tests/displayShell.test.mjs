@@ -95,5 +95,5 @@ test("futures bookcase module uses the configured electronic bookcase link", () 
 });
 
 test("market panel uses the configured Tonghuashun large-screen link", () => {
-  assert.equal(TONGHUASHUN_MARKET_URL, "https://board.10jqka.com.cn/fe/largescreen/macroEconomy.html");
+  assert.equal(TONGHUASHUN_MARKET_URL, "https://board.10jqka.com.cn/fe/largescreen/macroEconomySchool.html");
 });
