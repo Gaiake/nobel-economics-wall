@@ -69,9 +69,14 @@ test("person switching does not reanimate the whole card grid", () => {
 
 test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   for (const token of [
+    "html {",
+    "width: 6480px",
+    "height: 1920px",
+    "overflow: hidden",
+    "body {",
     ".screen-shell",
     "grid-template-columns: 1fr 2fr 3fr",
-    "width: max(100vw, 6480px)",
+    "width: 6480px",
     "height: 1920px",
     ".nav-panel",
     ".middle-panel",
@@ -138,14 +143,10 @@ test("shell styles reserve the six-screen 1:2:3 wall region", () => {
   assert.equal(css.includes("#0a2d63"), false, "old bright blue wall background should not return");
 });
 
-test("single-display debug styles preserve the full six-panel wall preview", () => {
-  for (const token of [
-    "@media (max-width: 1200px)",
-    "width: 6480px",
-    "height: 1920px",
-  ]) {
-    assert.ok(css.includes(token), `missing ${token}`);
-  }
+test("wall canvas is fixed without single-display scrolling helpers", () => {
+  assert.equal(css.includes("@media (max-width: 1200px)"), false, "small-screen scroll preview override should be removed");
+  assert.equal(css.includes("width: max(100vw, 6480px)"), false, "canvas should not expand against viewport width");
+  assert.equal(css.includes("overflow: auto"), false, "page should not expose outer scrolling");
   assert.equal(css.includes("单屏调试"), false, "single-display helper text should not be visible");
   assert.equal(css.includes(".screen-shell::after"), false, "single-display helper badge should be removed");
 });

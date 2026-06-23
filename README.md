@@ -23,7 +23,7 @@ node scripts/serve-preview.mjs
 PORT=8081 node scripts/serve-preview.mjs
 ```
 
-普通显示器预览时看到的是完整大屏画布的一部分，需要滚动查看六屏全貌。
+页面画布固定为 `6480 × 1920`，现场测试时建议将主机输出分辨率设置为同尺寸，并让浏览器进入全屏。
 
 ## 部署
 

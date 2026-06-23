@@ -26,11 +26,17 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 6480px;
+  height: 1920px;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
-  overflow: auto;
-  min-width: 6480px;
-  min-height: 1920px;
+  overflow: hidden;
+  width: 6480px;
+  height: 1920px;
   background:
     linear-gradient(90deg, rgba(140, 200, 223, 0.035) 1px, transparent 1px),
     linear-gradient(0deg, rgba(140, 200, 223, 0.025) 1px, transparent 1px),
@@ -433,7 +439,7 @@ blockquote::before {
 }
 
 .app-shell {
-  width: max(100vw, 6480px);
+  width: 6480px;
   height: 1920px;
   min-height: 1920px;
   padding: 0;
@@ -444,7 +450,7 @@ blockquote::before {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 2fr 3fr;
-  width: max(100vw, 6480px);
+  width: 6480px;
   height: 1920px;
   overflow: hidden;
 }
@@ -1591,14 +1597,6 @@ blockquote {
   background: var(--panel);
   color: var(--ink);
   font-size: 24px;
-}
-
-@media (max-width: 1200px) {
-  .app-shell,
-  .screen-shell {
-    width: 6480px;
-    height: 1920px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
