@@ -32,14 +32,10 @@ test("ambient background is static and non-interactive", () => {
   }
 });
 
-test("background has static particles and keyword texture layers", () => {
-  for (const token of [
-    ".app-shell::before",
-    ".app-shell::after",
-    "增长 · 制度 · 市场 · 福利 · 计量 · 创新",
-  ]) {
-    assert.ok(css.includes(token), `missing ${token}`);
-  }
+test("background keeps static particles without keyword texture text", () => {
+  assert.ok(css.includes(".app-shell::before"), "static particle layer should remain");
+  assert.equal(css.includes(".app-shell::after"), false, "keyword texture pseudo-element should be removed");
+  assert.equal(css.includes("增长 · 制度 · 市场 · 福利 · 计量 · 创新"), false, "keyword texture text should be removed");
 });
 
 test("exhibition polish tokens and surfaces are present", () => {

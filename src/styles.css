@@ -91,8 +91,7 @@ button {
   padding: clamp(20px, 2vw, 42px);
 }
 
-.app-shell::before,
-.app-shell::after {
+.app-shell::before {
   position: fixed;
   z-index: -1;
   pointer-events: none;
@@ -107,20 +106,6 @@ button {
   background-position: 0 0, 46px 38px;
   background-size: 138px 138px, 184px 184px;
   opacity: 0.24;
-}
-
-.app-shell::after {
-  content: "增长 · 制度 · 市场 · 福利 · 计量 · 创新";
-  left: 6vw;
-  right: 6vw;
-  bottom: 8vh;
-  color: rgba(226, 246, 255, 0.035);
-  font-size: clamp(36px, 4vw, 86px);
-  font-weight: 900;
-  letter-spacing: 0;
-  white-space: nowrap;
-  text-align: center;
-  text-shadow: 0 0 28px rgba(140, 200, 223, 0.06);
 }
 
 .loading-state,
