@@ -1197,27 +1197,31 @@ blockquote::before {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: clamp(16px, 1vw, 28px);
+  gap: clamp(8px, 0.55vw, 14px);
   margin-top: clamp(14px, 0.9vw, 22px);
   padding-top: clamp(14px, 0.9vw, 22px);
   border-top: 1px solid rgba(140, 200, 223, 0.2);
 }
 
 .nobel-footer span {
-  font-size: clamp(18px, 1vw, 28px);
+  font-size: clamp(14px, 0.72vw, 20px);
   font-weight: 900;
   white-space: nowrap;
 }
 
 .middle-panel .decade-nav {
+  flex-wrap: nowrap;
   max-width: none;
   justify-content: flex-start;
+  gap: 6px;
+  min-width: 0;
 }
 
 .middle-panel .decade-button {
-  min-height: clamp(54px, 3vw, 76px);
-  padding: 0 clamp(18px, 1.1vw, 30px);
-  font-size: clamp(18px, 0.95vw, 26px);
+  min-height: clamp(30px, 1.9vw, 42px);
+  padding: 0 clamp(8px, 0.48vw, 12px);
+  font-size: clamp(11px, 0.56vw, 16px);
+  white-space: nowrap;
 }
 
 .laureate-card,
