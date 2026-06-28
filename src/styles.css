@@ -814,8 +814,9 @@ blockquote::before {
 }
 
 .nobel-picker .card-meta {
-  font-size: 21px;
-  line-height: 1.25;
+  font-size: 25px;
+  line-height: 1.18;
+  white-space: nowrap;
 }
 
 .game-module h2 {
