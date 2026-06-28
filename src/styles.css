@@ -797,9 +797,9 @@ blockquote::before {
 }
 
 .nobel-picker .laureate-card {
-  min-height: 0;
-  aspect-ratio: 1 / 0.86;
+  min-height: 286px;
   padding: 22px 18px;
+  align-content: center;
 }
 
 .nobel-picker .portrait {
