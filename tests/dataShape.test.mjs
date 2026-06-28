@@ -23,6 +23,13 @@ test("missing-source markers are not displayed as content", () => {
   assert.equal(serialized.includes("找不到"), false);
 });
 
+test("laureate bios use collected profile copy instead of templates", () => {
+  for (const item of laureates) {
+    assert.ok(item.bio.length >= 10, `${item.id} bio is too short`);
+    assert.equal(item.bio.includes("代表性贡献获得诺贝尔经济学奖"), false, `${item.id} still uses template bio`);
+  }
+});
+
 test("card summaries use curated theory labels instead of sentence fragments", () => {
   const byId = Object.fromEntries(laureates.map((item) => [item.id, item]));
 
